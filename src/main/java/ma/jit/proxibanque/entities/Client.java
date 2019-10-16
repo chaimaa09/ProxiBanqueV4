@@ -1,5 +1,5 @@
 /**
- * 
+ * c'est une classe qui represente un client
  */
 package ma.jit.proxibanque.entities;
 
@@ -13,26 +13,55 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Groupe D
  *
  */
 @Entity
+@Table(name="client",uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Client implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long code;
-    private String nom;
-    private String prenom;
-    private String email;
-    private String adresse;
+	
+	@Size(min = 1, max = 25)
+    @Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces")
+	private String nom;
+	
+	@Size(min = 1, max = 25)
+    @Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces")
+	private String prenom;
+	
+	@Size(min = 1, max = 50)
+	private String adresse;
+	
+	@NotEmpty(message = "Email address cannot be empty")
+    @Email(message = "Invalid email address, e.g. valid email address: example@gmail.com")
+	private String email;
+	
     private String ville;
     private String codePostale;
+    
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private List<Compte> listeComptes = new ArrayList<Compte>();
+    
+    @ManyToOne
+	@JoinColumn(name="code_conseiller")
+    private Conseiller conseiller;
     
 	/**
 	 * constructeur sans parametres

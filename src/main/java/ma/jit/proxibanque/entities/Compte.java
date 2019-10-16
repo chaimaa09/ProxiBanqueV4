@@ -1,31 +1,45 @@
 /**
- * 
+ * c'est une classe qui represente un compte
  */
 package ma.jit.proxibanque.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * @author Groupe D
  *
  */
 @Entity
-public class Compte implements Serializable {
-	@Id @GeneratedValue
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_compte")
+public abstract class Compte implements Serializable {
+	
+	@Id @GeneratedValue(strategy =GenerationType.AUTO)
     private Long numCompte;
+	
     private Date dateCreation;
     private double solde;
     
     @ManyToOne
     @JoinColumn(name="CODE_CLIENT")
     private Client client;
+    
+    @OneToMany(mappedBy="compte",fetch=FetchType.LAZY)
+    private List<Operation> operations;
     
     
 	/**
