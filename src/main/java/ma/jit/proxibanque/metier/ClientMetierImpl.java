@@ -14,7 +14,7 @@ import ma.jit.proxibanque.entities.Client;
 import ma.jit.proxibanque.entities.CompteCourant;
 
 /**
- * @author FOLIO Groupe D
+ * @author  Group D
  *
  */
 
