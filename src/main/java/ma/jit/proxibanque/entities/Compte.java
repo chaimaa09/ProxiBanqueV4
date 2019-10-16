@@ -19,6 +19,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author Groupe D
  *
@@ -83,6 +85,7 @@ public abstract class Compte implements Serializable {
 		this.solde = solde;
 	}
 
+	@JsonIgnore
 	public Client getClient() {
 		return client;
 	}

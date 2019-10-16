@@ -1,3 +1,4 @@
+
 package ma.jit.proxibanque.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -6,7 +7,7 @@ import ma.jit.proxibanque.entities.Conseiller;
 
 /**
  * 
- * @author FOLIO Groupe D
+ * @author Groupe D
  *
  */
 
@@ -16,6 +17,6 @@ import ma.jit.proxibanque.entities.Conseiller;
  *
  */
 
-public interface IConseillerDAO extends JpaRepository<Conseiller, Long>{
+public interface ConseillerRepository extends JpaRepository<Conseiller, Long>{
 
 }
