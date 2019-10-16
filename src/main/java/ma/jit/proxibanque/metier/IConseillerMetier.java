@@ -3,7 +3,8 @@
  */
 package ma.jit.proxibanque.metier;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
 
 import ma.jit.proxibanque.entities.Conseiller;
 
@@ -12,5 +13,10 @@ import ma.jit.proxibanque.entities.Conseiller;
  *
  */
 public interface IConseillerMetier {
+	public Conseiller consulterConseiller(Long code);
+	public void supprimerConseiller(Long code);
+	public Conseiller ajouterConseiller(Conseiller c);
+	public Conseiller modifierConseiller(Long code, Conseiller c);
+	public List<Conseiller> listeConseillers() ;
 
 }
