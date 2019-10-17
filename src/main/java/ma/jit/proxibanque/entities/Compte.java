@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @DiscriminatorColumn(name="type_compte")
 public abstract class Compte implements Serializable {
 	
-	@Id @GeneratedValue(strategy =GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy =GenerationType.AUTO)
     private Long numCompte;
 	
     private Date dateCreation;
