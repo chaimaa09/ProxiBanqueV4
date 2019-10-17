@@ -35,7 +35,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Client implements Serializable {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long code;
 	
 	@Size(min = 1, max = 25)
