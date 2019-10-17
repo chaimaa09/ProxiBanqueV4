@@ -9,19 +9,28 @@ import { Client } from '../models/client';
 })
 export class ListClientComponent implements OnInit {
   
-  clients: Client[]= [];
+  clients: Client[];
 
   constructor(private clientService : ClientService) { }
 
   ngOnInit() {
+    this.getAll();
+  }
+  getAll(){
     this.clientService.getAll().subscribe((data) => {
       this.clients = data;
       console.log(data);
     });
   }
   delete(code:number){
-    this.clientService.deleteClient(code).subscribe(() =>  {
-      this.clients = this.clients.filter(client => client.code !== code);
-    });
-    }
+    this.clientService.deleteClient(code)
+    .subscribe((response)=>{
+      console.log(response),
+        this.getAll()
+      }, 
+      (error) => console.log(error))
+  }
+    
+    
+    
 }
