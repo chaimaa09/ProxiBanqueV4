@@ -25,7 +25,7 @@ export class EditClientComponent implements OnInit {
       codePostale:['']
     });
     this.activeRoute.params.subscribe( p => {
-      this.clientService.getById(p.code).subscribe( client => {
+      this.clientService.getClientById(p.code).subscribe( client => {
       this.clientForm.setValue(client)
       })
     })
