@@ -9,19 +9,30 @@ import { ListClientComponent } from './list-client/list-client.component';
 import { CreateClientComponent } from './create-client/create-client.component';
 import { LoginComponent } from './login/login.component';
 
+import { EditClientComponent } from './edit-client/edit-client.component';
+
+import { DetailsClientComponent } from './details-client/details-client.component';
+import { VirementComponent } from './virement/virement.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ListClientComponent,
     CreateClientComponent,
-    LoginComponent
+    LoginComponent,
+    EditClientComponent,
+    DetailsClientComponent,
+    VirementComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
