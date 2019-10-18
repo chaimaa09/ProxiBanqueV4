@@ -1,6 +1,8 @@
 package ma.jit.proxibanque.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,11 @@ public class BanqueController {
 
 	@Autowired
 	IBanqueMetier banqueService;
+	
+	@GetMapping("/consulter/{code}")
+	void consulterCompte(@PathVariable(value="code") Long code) {
+		banqueService.consulterCompte(code);
+	}
 	
 	@RequestMapping("/debiter")
 	void debiter(@RequestParam(value="code1") Long code1, @RequestParam(value="mt") double montant) {

@@ -12,6 +12,7 @@ import ma.jit.proxibanque.entities.Client;
  * c'est l'interfece des methodes metier Client
  */
 public interface IClientMetier {
+	
 	public Client consulterClient(Long code);
 	public void supprimerClient(Long code);
 	public Client ajouterClient(Client c);

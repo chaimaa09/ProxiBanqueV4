@@ -25,6 +25,7 @@ public class BanqueMetierImpl implements IBanqueMetier {
 	public Compte consulterCompte(Long code) {
 		
 		Compte compte= compteRepository.getOne(code);
+		System.out.println(compte);
 		if(compte==null) throw new RuntimeException("Compte introuvable");
 		return compte;
 	}
