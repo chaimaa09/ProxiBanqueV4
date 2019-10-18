@@ -1,0 +1,46 @@
+
+<div class="container mt-5">
+<div class="card-deck">
+  <div class="card">
+    <div class="card-header">Informations sur le client</div>
+    <div class="card-body">
+   
+      <div *ngIf="client">
+        <div>
+          <label><b>Nom de famille: </b></label> {{client.nom}}
+        </div>
+        <div>
+          <label><b>Prénom: </b></label> {{client.prenom}}
+        </div>
+        <div>
+          <label><b>Email : </b></label> {{client.email}}
+        </div>  
+        <div>
+          <label><b>Adresse : </b></label> {{client.adresse}}
+        </div>
+        <div>
+          <label><b>Ville : </b></label> {{client.ville}}
+        </div>
+        <div>
+          <label><b>Code Postal : </b></label> {{client.codePostale}}
+        </div>
+      </div>
+    </div>
+  
+    <br>
+    <td>
+    <button (click)="list()" class="btn btn-primary float-right"> Retour </button>
+  </td>
+  </div>
+
+
+  <div class="card">
+    <div class="card-header">Informations sur les comptes</div>
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+    </div>
+    
+  </div>
+  
+</div>

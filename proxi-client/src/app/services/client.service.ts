@@ -13,6 +13,10 @@ export class ClientService {
   getAll(){
     return this.httpClient.get<Client[]>(environment.serverUrl+"clients");
   }
+  getClientById(code:number){
+    return this.httpClient.get<Client>(environment.serverUrl+"clients/"+code)
+  }
+
   deleteClient(code:number):Observable<Object>{
    return this.httpClient.delete(environment.serverUrl+"clients/"+code, {responseType:'text'});
   }

@@ -7,13 +7,19 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ListClientComponent } from './list-client/list-client.component';
 import { CreateClientComponent } from './create-client/create-client.component';
+import { DetailsClientComponent } from './details-client/details-client.component';
+import { VirementComponent } from './virement/virement.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ListClientComponent,
-    CreateClientComponent
+    CreateClientComponent,
+    DetailsClientComponent,
+    VirementComponent,
+    
   ],
   imports: [
     BrowserModule,
