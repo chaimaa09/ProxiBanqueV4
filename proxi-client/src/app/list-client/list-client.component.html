@@ -22,7 +22,7 @@
           <td>{{c.codePostale}}</td>
 
           <td>
-            <button type="button" class="btn btn-outline-success" >Modifier</button>
+            <button type="button" class="btn btn-outline-success" ><a [routerLink]="['/edit-client', c.code]" >Modifier</a></button>
             <button type="button" class="btn btn-outline-primary" >Comptes</button>
             <button type="button" class="btn btn-outline-warning" >Virement</button>
             <button type="button" class="btn btn-outline-danger" (click)="delete(c.code)">Supprimer</button>
