@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div><a href="" class="navbar-brand">Proxibanque</a></div>
-    <a href="" class="nav-item nav-link text-light">Acceuil</a>
-    <a href="" class="nav-item nav-link text-light">Creer client</a>
+    <div><a [routerLink]="['/list-clients']" class="navbar-brand">Proxibanque</a></div>
+    <a [routerLink]="['/list-clients']" class="nav-item nav-link text-light">Acceuil</a>
+    <a [routerLink]="['/create-client']" class="nav-item nav-link text-light">Creer client</a>
    
     <ul class="navbar-nav navbar-collapse justify-content-end">
         <li>
