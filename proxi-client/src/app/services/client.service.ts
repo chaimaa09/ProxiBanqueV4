@@ -14,8 +14,9 @@ export class ClientService {
     return this.httpClient.get<Client[]>(environment.serverUrl+"clients");
   }
 
-  getById(code: number):Observable<Object>{
-    return this.httpClient.get<Client>(environment.serverUrl + "clients/" + code)
+
+  getClientById(code:number){
+    return this.httpClient.get<Client>(environment.serverUrl+"clients/"+code)
   }
 
   deleteClient(code:number):Observable<Object>{
