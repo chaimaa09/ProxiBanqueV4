@@ -33,8 +33,8 @@ public class BanqueController {
 	}
 	
 	@RequestMapping("/crediter")
-	void crediter(@RequestParam(value="codeC") int codeC, @RequestParam(value="mt") double montant) {
-		banqueService.verser(codeC, montant);
+	void crediter(@RequestParam(value="IdParam")Long idParametrage, @RequestParam(value="codeC") int codeC, @RequestParam(value="mt") double montant) {
+		banqueService.verser(idParametrage,codeC, montant);
 	}
 	
 //	@RequestMapping("/virement")
@@ -46,7 +46,8 @@ public class BanqueController {
 		int debiteur =(int) operation.get("compteD");
 		int crediteur = (int) operation.get("compteC");
 		double montant = (int) operation.get("montant");
-		return banqueService.virement(debiteur, crediteur, montant);
+		long idParam = (int) operation.get("idParam");
+		return banqueService.virement(idParam, debiteur, crediteur, montant);
 
 	}
 	

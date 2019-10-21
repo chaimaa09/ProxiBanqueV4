@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./virement.component.css']
 })
 export class VirementComponent implements OnInit {
-
+myClients:any;
   constructor(private serviceVirement:VirementService) { }
 
   ngOnInit() {
