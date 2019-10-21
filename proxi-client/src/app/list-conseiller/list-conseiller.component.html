@@ -1,0 +1,26 @@
+<div class="container col-sm-8 mt-5">
+    <table class="table table-hover">  
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">CODE CONSEILLER</th>
+            <th scope="col">NOM</th>
+            <th scope="col">PRENOM</th>
+            <th colspan="2" scope="col">ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cc of conseillers">
+            <th scope="row">{{cc.id}}</th>
+                <td>{{cc.nom}}</td>
+                <td>{{cc.prenom}}</td>
+                
+                <td> 
+                    <button type="button" class="btn btn-outline-primary" [routerLink]="['/details-conseiller', cc.id]">Details</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger" (click)="delete(cc.id)">Supprimer</button>
+                </td>
+            </tr>
+        </tbody>
+	</table>
+</div>

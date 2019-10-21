@@ -37,8 +37,49 @@
   <div class="card">
     <div class="card-header">Informations sur les comptes</div>
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+
+        <div *ngIf="client.compteCourant">
+            <h4>Informations comptes courants</h4>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">N° Compte</th>
+                  <th scope="col">Date ouverture</th>
+                  <th scope="col">Solde</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">{{client.compteCourant.numCompte}}</th>
+                  <th >{{client.compteCourant.dateCreation | date : 'dd/MM/yyyy'}}</th>
+                  <th >{{client.compteCourant.solde}}</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+      <div *ngIf="client.compteEpargne">
+        <h4>Informations comptes épargne</h4>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">N° Compte</th>
+              <th scope="col">Date ouverture</th>
+              <th scope="col">Solde</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{client.compteEpargne.numCompte}}</th>
+              <th >{{client.compteEpargne.dateCreation | date : 'dd/MM/yyyy'}}</th>
+              <th >{{client.compteEpargne.solde}}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     
   </div>

@@ -4,10 +4,10 @@
 package ma.jit.proxibanque.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,8 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,22 +24,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  *
  */
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_compte")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Compte implements Serializable {
 	
-	@Id @GeneratedValue(strategy =GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy =GenerationType.AUTO)
     private Long numCompte;
 	
     private Date dateCreation;
     private double solde;
     
-    @ManyToOne
-    @JoinColumn(name="CODE_CLIENT")
-    private Client client;
+//    @ManyToOne
+//    @JoinColumn(name="CODE_CLIENT")
+//    private Client client;
     
     @OneToMany(mappedBy="compte",fetch=FetchType.LAZY)
-    private List<Operation> operations;
+    @JsonIgnore
+    private List<Operation> operations =  new ArrayList<>();
     
     
 	/**
@@ -54,13 +52,21 @@ public abstract class Compte implements Serializable {
 	/**
 	 * constructeur avec parametres
 	 */
-	public Compte(Date dateCreation, double solde, Client client) {
+//	public Compte(Date dateCreation, double solde, Client client) {
+//		super();
+//		this.dateCreation = dateCreation;
+//		this.solde = solde;
+//		this.client = client;
+//	}
+	
+	
+	public Compte(Date dateCreation, double solde, List<Operation> operations) {
 		super();
 		this.dateCreation = dateCreation;
 		this.solde = solde;
-		this.client = client;
+		this.operations = operations;
 	}
-
+	
 	public Long getNumCompte() {
 		return numCompte;
 	}
@@ -85,13 +91,23 @@ public abstract class Compte implements Serializable {
 		this.solde = solde;
 	}
 
-	@JsonIgnore
-	public Client getClient() {
-		return client;
+	public List<Operation> getOperations() {
+		return operations;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
 	}
+	
+	
+
+//	@JsonIgnore
+//	public Client getClient() {
+//		return client;
+//	}
+//
+//	public void setClient(Client client) {
+//		this.client = client;
+//	}
 
 }

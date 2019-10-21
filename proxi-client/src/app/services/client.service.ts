@@ -23,7 +23,7 @@ export class ClientService {
    return this.httpClient.delete(environment.serverUrl+"clients/"+code, {responseType:'text'});
   }
 
-  addClient(client:Client):Observable<Object>{
+  addClient(client):Observable<Object>{
     return this.httpClient.post(environment.serverUrl+"clients",client);
   }
 

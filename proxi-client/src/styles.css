@@ -4,7 +4,35 @@
     left: 0;
     bottom: 0;
     width: 100%;
+  
     background-color:#353a40;
     color: white;
     text-align: center;
   }
+
+
+  .table td {
+    text-align: center;
+       
+ }
+
+ .table th {
+  text-align: center;  
+}
+
+fieldset.field-border {
+  border: 1px groove #ddd !important;
+  padding: 0 1.4em 1.4em 1.4em !important;
+  margin: 0 0 1.5em 0 !important;
+  -webkit-box-shadow:  0px 0px 0px 0px #000;
+          box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend.legend-border {
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+  text-align: left !important;
+  width:auto;
+  padding:0 10px;
+  border-bottom:none;
+}

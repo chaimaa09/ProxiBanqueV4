@@ -4,18 +4,15 @@
 package ma.jit.proxibanque.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Pattern;
@@ -26,6 +23,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * @author Groupe D
@@ -37,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Client implements Serializable {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long code;
 	
 	@Size(min = 1, max = 25)
@@ -58,11 +56,20 @@ public class Client implements Serializable {
     private String ville;
     private String codePostale;
     
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-    private List<Compte> listeComptes = new ArrayList<Compte>();
+//    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+//    private List<Compte> listeComptes = new ArrayList<Compte>();
+    
+    @OneToOne(mappedBy = "client", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JsonManagedReference
+    private CompteCourant compteCourant;
+    
+    @OneToOne(mappedBy = "client", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JsonManagedReference
+    private CompteEpargne compteEpargne;
     
     @ManyToOne
 	@JoinColumn(name="code_conseiller")
+    @JsonIgnore
     private Conseiller conseiller;
     
 	/**
@@ -74,24 +81,45 @@ public class Client implements Serializable {
 	/**
 	 * constructeur avec parametres
 	 */
-	public Client(String nom, String prenom, String email, String adresse, String ville, String codePostale,
-			List<Compte> listeComptes) {
+//	public Client(String nom, String prenom, String email, String adresse, String ville, String codePostale,
+//			List<Compte> listeComptes) {
+//		super();
+//		this.nom = nom;
+//		this.prenom = prenom;
+//		this.email = email;
+//		this.adresse = adresse;
+//		this.ville = ville;
+//		this.codePostale = codePostale;
+//		this.listeComptes = listeComptes;
+//	}
+	
+	public Client(
+			@Size(min = 1, max = 25) @Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces") String nom,
+			@Size(min = 1, max = 25) @Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces") String prenom,
+			@Size(min = 1, max = 50) String adresse,
+			@NotEmpty(message = "Email address cannot be empty") @Email(message = "Invalid email address, e.g. valid email address: example@gmail.com") String email,
+			String ville, String codePostale, CompteCourant compteCourant, CompteEpargne compteEpargne,
+			Conseiller conseiller) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.email = email;
 		this.adresse = adresse;
+		this.email = email;
 		this.ville = ville;
 		this.codePostale = codePostale;
-		this.listeComptes = listeComptes;
+		this.compteCourant = compteCourant;
+		this.compteEpargne = compteEpargne;
+		this.conseiller = conseiller;
 	}
 
 	public Long getCode() {
 		return code;
 	}
+	
 	public void setCode(Long code) {
 		this.code = code;
 	}
+	
 	public String getNom() {
 		return nom;
 	}
@@ -139,14 +167,40 @@ public class Client implements Serializable {
 	public void setCodePostale(String codePostale) {
 		this.codePostale = codePostale;
 	}
-
-	@JsonIgnore
-	public List<Compte> getListeComptes() {
-		return listeComptes;
+	
+	public CompteCourant getCompteCourant() {
+		return compteCourant;
+	}
+	
+	public void setCompteCourant(CompteCourant compteCourant) {
+		this.compteCourant = compteCourant;
+	}
+	
+	public CompteEpargne getCompteEpargne() {
+		return compteEpargne;
+	}
+	
+	public void setCompteEpargne(CompteEpargne compteEpargne) {
+		this.compteEpargne = compteEpargne;
+	}
+	
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+	
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
 	}
 
-	public void setListeComptes(List<Compte> listeComptes) {
-		this.listeComptes = listeComptes;
-	}
+//	@JsonIgnore
+//	public List<Compte> getListeComptes() {
+//		return listeComptes;
+//	}
+//
+//	public void setListeComptes(List<Compte> listeComptes) {
+//		this.listeComptes = listeComptes;
+//	}
+	
+	
 
 }

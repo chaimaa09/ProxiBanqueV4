@@ -40,13 +40,20 @@ public class ClientMetierImpl implements IClientMetier {
 	}
 
 	@Override
-	public Client ajouterClient(Client c) {
-		CompteCourant compte = new CompteCourant();
-		compte.setSolde(2000.00);
-		compte.setDateCreation(new Date());
-		compte.setClient(c);
-		c.getListeComptes().add(compte);
-		return clientRepository.save(c);
+	public Client ajouterClient(Client client) {
+//		CompteCourant compte = new CompteCourant();
+//		compte.setSolde(2000.00);
+//		compte.setDateCreation(new Date());
+//		compte.setClient(c);
+//		c.getListeComptes().add(compte);
+		
+		if (client.getCompteCourant() != null)
+			client.getCompteCourant().setDateCreation(new Date());
+
+		if (client.getCompteEpargne() != null)
+			client.getCompteEpargne().setDateCreation(new Date());
+
+		return clientRepository.save(client);
 	}
 
 	@Override

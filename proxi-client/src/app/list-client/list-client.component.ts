@@ -16,12 +16,14 @@ export class ListClientComponent implements OnInit {
   ngOnInit() {
     this.getAll();
   }
+
   getAll(){
     this.clientService.getAll().subscribe((data) => {
       this.clients = data;
       console.log(data);
     });
   }
+  
   delete(code:number){
     this.clientService.deleteClient(code)
     .subscribe((response)=>{
