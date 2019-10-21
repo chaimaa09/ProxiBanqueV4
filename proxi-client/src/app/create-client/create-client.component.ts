@@ -16,18 +16,25 @@ export class CreateClientComponent implements OnInit {
   }
 
   onSubmit(clientForm: NgForm) {
-    let client = clientForm.value;
+    const client = clientForm.value;
+    
     const client1 = {
       nom: client.nom,
       prenom:client.prenom,
       adresse:client.adresse,
       email:client.email,
       ville:client.ville,
-      codePostale:client.codePostale
+      codePostale:client.codePostale,
+      compteCourant : {
+        solde : client.soldeCourant
+      },
+      compteEpargne : {
+        solde : client.soldeEpargne ? client.soldeEpargne : null
+      }
     }
-    this.clientService.addClient(client).subscribe((data) => {
-      console.log(client);
-      this.router.navigate(['list-clients'])
+    this.clientService.addClient(client1).subscribe((data) => {
+      console.log(client1);
+      this.router.navigate(['/list-clients'])
     })
   }
 }

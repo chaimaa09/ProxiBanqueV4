@@ -1,19 +1,29 @@
-<form class="container mt-5">
+
+<div class="container mt-5">
+<div class="card-deck">
+  <div class="card">
+    <div class="card-header">Virement Compte à Compte</div>
+    <div class="card-body">
+<form #detailForm="ngForm" (ngSubmit)="virement(detailForm)">
     <div class="form-group">
-      <label for="compte1">Compte débiteur</label>
-      <input type="text" class="form-control" id="compte1"  placeholder="Enter compte1">
+      <label >Numéro Compte débiteur</label>
+      <input type="number" class="form-control"   placeholder="Enter compte débiteur" name="compteD" ngModel>
       
     </div>
     <div class="form-group">
-        <label for="compte2">Compte créditeur</label>
-        <input type="text" class="form-control" id="compte2"  placeholder="Enter compte2">
+        <label >Numéro Compte créditeur</label>
+        <input type="number" class="form-control"  placeholder="Enter compte créditeur" name="compteC" ngModel>
         
       </div>
       <div class="form-group">
-        <label for="montant">Montant</label>
-        <input type="text" class="form-control" id="montant"  placeholder="Enter montant">
+        <label >Montant</label>
+        <input type="number" class="form-control"  placeholder="Enter montant" name="montant" ngModel>
         
       </div>
  
     <button type="submit" class="btn btn-primary">effectuer virement</button>
   </form>
+    </div>
+  </div>
+</div>
+</div>

@@ -4,19 +4,33 @@
 package ma.jit.proxibanque.entities;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
+
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
  * @author Groupe D
  *
  */
 @Entity
-@DiscriminatorValue("ce")
 public class CompteEpargne extends Compte {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private final double tauxRemuneration =0.03;
+	
+	@OneToOne
+	@JoinColumn(name = "code_client")
+	@JsonBackReference
+	private Client client;
 	
 	/**
 	 * @return the tauxRemuneration
@@ -32,15 +46,40 @@ public class CompteEpargne extends Compte {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+	/**
+	 * @param dateCreation
+	 * @param solde
+	 * @param versement
+	 * @param retrait
+	 */
+	public CompteEpargne(Date dateCreation, double solde, List<Operation> versement, List<Operation> retrait) {
+		super(dateCreation, solde, versement, retrait);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * constructeur avec parametres
 	 * @param dateCreation
 	 * @param solde
 	 * @param client
 	 */
-	public CompteEpargne(Date dateCreation, double solde, Client client) {
-		super(dateCreation, solde, client);
-		// TODO Auto-generated constructor stub
+//	public CompteEpargne(Date dateCreation, double solde, Client client) {
+//		super(dateCreation, solde, client);
+//		// TODO Auto-generated constructor stub
+//	}
+	
+	
+
+	public CompteEpargne(Client client) {
+		super();
+		this.client = client;
 	}
+	
+	
+	
+	
+	
 
 }

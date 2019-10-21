@@ -27,11 +27,14 @@ public class Retrait extends Operation implements Serializable{
 	/**
 	 * @param dateOp
 	 * @param montant
-	 * @param compte
+	 * @param crediteur
+	 * @param debiteur
 	 */
-	public Retrait(Date dateOp, double montant, Compte compte) {
-		super(dateOp, montant, compte);
+	public Retrait(Date dateOp, double montant, Compte debiteur) {
+		super(dateOp, montant, debiteur);
 		// TODO Auto-generated constructor stub
 	}
+
+
 
 }

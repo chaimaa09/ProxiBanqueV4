@@ -1,12 +1,13 @@
 package ma.jit.proxibanque.metier;
 
-import ma.jit.proxibanque.entities.Compte;
+
 
 public interface IBanqueMetier {
 
-	public Compte consulterCompte(Long code);
-	public void verser(Long code,double montant);
-	public void retirer(Long code,double montant);
-	public void virement(Long code1,Long code2,double montant);
+	
+	public void verser(int codeC,double montant);
+	public void retirer(int codeD,double montant);
+	public boolean virement(int codeD,int codeC,double montant);
+//	Compte consulterCompte(Long code);
 	
 }
