@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.jit.proxibanque.dao.CompteRepository;
+import ma.jit.proxibanque.dao.IParametrageRepository;
 import ma.jit.proxibanque.dao.OperationRepository;
 import ma.jit.proxibanque.entities.Compte;
 import ma.jit.proxibanque.entities.CompteCourant;
+import ma.jit.proxibanque.entities.Parametrage;
 import ma.jit.proxibanque.entities.Retrait;
 import ma.jit.proxibanque.entities.Versement;
 
@@ -20,6 +22,9 @@ public class BanqueMetierImpl implements IBanqueMetier {
 	
 	@Autowired
 	OperationRepository operationRepository;
+	
+	@Autowired
+	IParametrageRepository parametrageRepository;
 	/*
 	 * @Override public CompteCourant consulterCompte(Long code) {
 	 * 
@@ -30,9 +35,10 @@ public class BanqueMetierImpl implements IBanqueMetier {
 
 
 	@Override
-	public void verser(int codeC, double montant) {
+	public void verser(long idParametrage,int codeC, double montant) {
 		Compte crediteur= compteRepository.findById(codeC).get();
-		double commision = montant * 0.05;
+		Parametrage parametrage = parametrageRepository.findById(idParametrage).get();
+		double commision = montant * parametrage.getCommission();
 		double montantFinal = montant - commision;
 		Versement opv=new Versement(new Date(), montant, crediteur);
 		operationRepository.save(opv);
@@ -61,12 +67,12 @@ public class BanqueMetierImpl implements IBanqueMetier {
 	}
 
 	@Override
-	public boolean virement(int codeD, int codeC, double montant) {
+	public boolean virement(long idParametrage,int codeD, int codeC, double montant) {
 //		if(codeD.equals(codeC))
 //			throw new RuntimeException("impossible de virer sur le meme compte !");
 			retirer(codeD,montant);
-			verser(codeC,montant);
-return true;
+			verser(idParametrage,codeC,montant);
+			return true;
 	}
 
 }

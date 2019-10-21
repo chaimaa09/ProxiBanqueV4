@@ -28,14 +28,11 @@ public class Versement extends Operation implements Serializable {
 	/**
 	 * @param dateOp
 	 * @param montant
-	 * @param crediteur
-	 * @param debiteur
+	 * @param compte
 	 */
-	public Versement(Date dateOp, double montant, Compte crediteur) {
-		super(dateOp, montant, crediteur);
+	public Versement(Date dateOp, double montant, Compte compte) {
+		super(dateOp, montant, compte);
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
 }

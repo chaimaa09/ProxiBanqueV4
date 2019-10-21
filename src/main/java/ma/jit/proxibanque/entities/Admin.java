@@ -15,63 +15,23 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Admin implements Serializable {
-	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO)
-	private int id;
-	private String prenom;
-	private String nom;
+public class Admin extends Employe implements Serializable {
+	
 	private String login;
 	private String password;
 
 	/**
 	 * constructeur sans parametres
 	 */
-	public Admin() {
+	
+
+	
+
+	public Admin(String nom, String prenom) {
+		super(nom, prenom);
 		// TODO Auto-generated constructor stub
 	}
-
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the prenom
-	 */
-	public String getPrenom() {
-		return prenom;
-	}
-
-	/**
-	 * @param prenom the prenom to set
-	 */
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	/**
-	 * @return the nom
-	 */
-	public String getNom() {
-		return nom;
-	}
-
-	/**
-	 * @param nom the nom to set
-	 */
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+	
 
 	/**
 	 * @return the login
@@ -101,18 +61,27 @@ public class Admin implements Serializable {
 		this.password = password;
 	}
 
+
+	public Admin(String nom, String prenom, String login, String password) {
+		super(nom, prenom);
+		this.login = login;
+		this.password = password;
+	}
+
 	/**
 	 * @param prenom
 	 * @param nom
 	 * @param login
 	 * @param password
 	 */
-	public Admin(String prenom, String nom, String login, String password) {
-		super();
-		this.prenom = prenom;
-		this.nom = nom;
-		this.login = login;
-		this.password = password;
-	}
+//	public Admin(String prenom, String nom, String login, String password) {
+//		super();
+//		this.prenom = prenom;
+//		this.nom = nom;
+//		this.login = login;
+//		this.password = password;
+//	}
+	
+	
 
 }
