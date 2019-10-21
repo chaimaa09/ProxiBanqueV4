@@ -27,7 +27,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@DiscriminatorColumn(name="type_compte")
 public abstract class Compte implements Serializable {
 	
 	/**
