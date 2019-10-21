@@ -31,6 +31,7 @@ public class CompteCourant extends Compte implements Serializable{
 	}
 	
 	@OneToOne
+
 	@JoinColumn(name = "code_client")
 	@JsonBackReference
 	private Client client;
@@ -51,6 +52,7 @@ public class CompteCourant extends Compte implements Serializable{
 //	}
 	
 	
+
 	
 	
 	
@@ -66,8 +68,12 @@ public class CompteCourant extends Compte implements Serializable{
 	 */
 	public CompteCourant(Date dateCreation, double solde, List<Operation> versement, List<Operation> retrait) {
 		super(dateCreation, solde, versement, retrait);
-		// TODO Auto-generated constructor stub
+
 	}
+
+	
+	
+
 	/**
 	 * @param numCompte
 	 * @param dateCreation
@@ -78,7 +84,7 @@ public class CompteCourant extends Compte implements Serializable{
 	public CompteCourant(int numCompte, Date dateCreation, double solde, List<Operation> versement,
 			List<Operation> retrait) {
 		super(numCompte, dateCreation, solde, versement, retrait);
-		// TODO Auto-generated constructor stub
+
 	}
 	public Client getClient() {
 		return client;

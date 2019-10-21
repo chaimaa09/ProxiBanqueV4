@@ -12,6 +12,7 @@ export class DetailsClientComponent implements OnInit {
 
   code: number;
   client: Client;
+  
   constructor(private route: ActivatedRoute,private router: Router,private serviceClient:ClientService) { }
 
   ngOnInit() {

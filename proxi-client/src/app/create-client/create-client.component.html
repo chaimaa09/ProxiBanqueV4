@@ -1,46 +1,68 @@
-<div class="container">
-  {{clientForm.value | json}}
-  <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Nom</label>
-        <input ngModel name="nom" type="text" class="form-control" id="nom" placeholder="Nom">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Prénom</label>
-        <input ngModel name="prenom" type="text" class="form-control" id="prenom" placeholder="Prenom">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputAddress">Adresse</label>
-      <input ngModel name="adresse" type="text" class="form-control" id="adresse" placeholder="1234 Main St">
-    </div>
-    <div class="form-group">
-      <label for="inputAddress2">Email</label>
-      <input ngModel name="email" type="email" class="form-control" id="email" placeholder="jane.doe@gmail.com">
-    </div>
-    <div class="form-group">
-      <label for="inputAddress">Ville</label>
-      <input ngModel name="ville" type="text" class="form-control" id="ville" placeholder="NY city">
-    </div>
-    <div class="form-group">
-      <label for="inputAddress">Code Postal</label>
-      <input ngModel name="codePostale" type="text" class="form-control" id="codePostal" placeholder="20000">
-    </div>
-    <div class="form-row">
+<div class="container mt-5">
+    {{clientForm.value | json}}
+    <fieldset class="field-border">
+    <legend class="legend-border">Ajout client</legend>
+    <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)">
 
-      <div class="form-group col-md-4">
-        <h4>Information Compte Courant (obligatoire)</h4>
-        <label for="inputSoldecourant">Solde</label>
-        <input type="number" class="form-control" name="soldeCourant" ngModel id="inputSoldecourant">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Nom</label>
+          <input ngModel name="nom" type="text" class="form-control" id="nom" placeholder="Nom">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Prénom</label>
+          <input ngModel name="prenom" type="text" class="form-control" id="prenom" placeholder="Prenom">
+        </div>
       </div>
 
-      <div class="form-group col-md-4">
-        <h4>Information Compte Epargne (Optionnel)</h4>
-        <label for="inputSoldeepargne">Solde</label>
-        <input type="number" class="form-control" name="soldeEpargne" ngModel id="inputSoldeepargne">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="inputAddress">Adresse</label>
+          <input ngModel name="adresse" type="text" class="form-control" id="adresse" placeholder="1234 Main St">
+        </div>
       </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Ajouter</button>
-  </form>
-</div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputAddress2">Email</label>
+          <input ngModel name="email" type="email" class="form-control" id="email" placeholder="jane.doe@gmail.com">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputAddress">Ville</label>
+          <input ngModel name="ville" type="text" class="form-control" id="ville" placeholder="NY city">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputAddress">Code Postal</label>
+            <input ngModel name="codePostale" type="text" class="form-control" id="codePostal" placeholder="20000">
+        </div>
+      </div>
+      
+      <hr>
+
+      <div class="form-row">
+        
+        <div class="form-group col-md-4">
+          <h4>Information Compte Courant (Obligatoire)<span style="color:red">*</span></h4>
+          <label for="inputSoldecourant">Solde</label>
+          <input type="number" class="form-control" name="soldeCourant" ngModel id="inputSoldecourant" placeholder="20 MAD">
+        </div>
+    
+        <div class="form-group col-md-4">
+          <h4>Information Compte Epargne (Optionnel)</h4>
+          <label for="inputSoldeepargne">Solde</label>
+          <input type="number" class="form-control" name="soldeEpargne" ngModel id="inputSoldeepargne">
+        </div>
+
+      </div>
+
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</fieldset>
+  </div>
+  

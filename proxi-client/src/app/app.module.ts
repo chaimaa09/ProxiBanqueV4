@@ -13,6 +13,10 @@ import { EditClientComponent } from './edit-client/edit-client.component';
 
 import { DetailsClientComponent } from './details-client/details-client.component';
 import { VirementComponent } from './virement/virement.component';
+import { ListConseillerComponent } from './list-conseiller/list-conseiller.component';
+import { DetailsConseillerComponent } from './details-conseiller/details-conseiller.component';
+import { CreateConseillerComponent } from './create-conseiller/create-conseiller.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -24,7 +28,11 @@ import { VirementComponent } from './virement/virement.component';
     LoginComponent,
     EditClientComponent,
     DetailsClientComponent,
-    VirementComponent
+    VirementComponent,
+    ListConseillerComponent,
+    DetailsConseillerComponent,
+    CreateConseillerComponent,
+    FooterComponent
     
   ],
   imports: [

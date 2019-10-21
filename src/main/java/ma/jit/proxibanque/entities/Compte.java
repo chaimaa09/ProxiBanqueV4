@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.DiscriminatorColumn;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+
+
 
 import javax.persistence.OneToMany;
 
@@ -29,13 +31,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Compte implements Serializable {
 	
+
+	@Id @GeneratedValue(strategy =GenerationType.AUTO)
+    private int numCompte;
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue(strategy =GenerationType.AUTO)
-    private int numCompte;
+	
+
 	
     private Date dateCreation;
     private double solde;
@@ -44,9 +50,11 @@ public abstract class Compte implements Serializable {
 //    @JoinColumn(name="CODE_CLIENT")
 //    private Client client;
     
+
     @OneToMany(mappedBy="crediteur")
     @JsonIgnore
     private List<Operation> versement =  new ArrayList<>();
+
     
     @OneToMany(mappedBy="debiteur")
     @JsonIgnore
@@ -70,9 +78,11 @@ public abstract class Compte implements Serializable {
 //	}
 	
 	
+
 	
 	
 	public int getNumCompte() {
+
 		return numCompte;
 	}
 
@@ -96,6 +106,7 @@ public abstract class Compte implements Serializable {
 		this.solde = solde;
 	}
 
+
 	/**
 	 * @return the versement
 	 */
@@ -103,12 +114,26 @@ public abstract class Compte implements Serializable {
 		return versement;
 	}
 
+
+
 	/**
 	 * @param versement the versement to set
 	 */
 	public void setVersement(List<Operation> versement) {
 		this.versement = versement;
+
 	}
+	
+	
+
+//	@JsonIgnore
+//	public Client getClient() {
+//		return client;
+//	}
+//
+//	public void setClient(Client client) {
+//		this.client = client;
+//	}
 
 	/**
 	 * @return the retrait
