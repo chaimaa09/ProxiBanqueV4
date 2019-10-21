@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public abstract class Compte implements Serializable {
 	
 	@Id @GeneratedValue(strategy =GenerationType.AUTO)
-    private Long numCompte;
+    private int numCompte;
 	
     private Date dateCreation;
     private double solde;
@@ -67,11 +67,11 @@ public abstract class Compte implements Serializable {
 		this.operations = operations;
 	}
 	
-	public Long getNumCompte() {
+	public int getNumCompte() {
 		return numCompte;
 	}
 
-	public void setNumCompte(Long numCompte) {
+	public void setNumCompte(int numCompte) {
 		this.numCompte = numCompte;
 	}
 
