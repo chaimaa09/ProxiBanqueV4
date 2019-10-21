@@ -19,13 +19,9 @@ import javax.persistence.OneToMany;
  *
  */
 @Entity
-public class Gerant implements Serializable {
+public class Gerant extends Employe implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO)
-	private int id;
-	private String prenom;
-	private String nom;
+
 	private String login;
 	private String password;
 	
@@ -34,9 +30,7 @@ public class Gerant implements Serializable {
 	/**
 	 * constructeur sans parametres
 	 */
-	public Gerant() {
-		// TODO Auto-generated constructor stub
-	}
+	
 	/**
 	 * @param prenom
 	 * @param nom
@@ -44,56 +38,27 @@ public class Gerant implements Serializable {
 	 * @param password
 	 * @param conseiller
 	 */
-	public Gerant(String prenom, String nom, String login, String password, List<Conseiller> conseiller) {
-		super();
-		this.prenom = prenom;
-		this.nom = nom;
-		this.login = login;
-		this.password = password;
-		this.conseiller = conseiller;
+//	public Gerant(String prenom, String nom, String login, String password, List<Conseiller> conseiller) {
+//		super();
+//		this.prenom = prenom;
+//		this.nom = nom;
+//		this.login = login;
+//		this.password = password;
+//		this.conseiller = conseiller;
+//	}
+	
+	public Gerant(String nom, String prenom) {
+		super(nom, prenom);
+		// TODO Auto-generated constructor stub
 	}
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-	/**
-	 * @return the prenom
-	 */
-	public String getPrenom() {
-		return prenom;
-	}
-	/**
-	 * @param prenom the prenom to set
-	 */
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-	/**
-	 * @return the nom
-	 */
-	public String getNom() {
-		return nom;
-	}
-	/**
-	 * @param nom the nom to set
-	 */
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+
 	/**
 	 * @return the login
 	 */
 	public String getLogin() {
 		return login;
 	}
+	
 	/**
 	 * @param login the login to set
 	 */

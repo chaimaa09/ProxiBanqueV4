@@ -8,24 +8,20 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author Groupe D
  *
  */
 @Entity
-public class Conseiller implements Serializable {
-	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO)
-	private Long id;
-	private String prenom;
-	private String nom;
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Conseiller extends Employe implements Serializable {
+	
 	private String login;
 	private String password;
 	
@@ -39,9 +35,12 @@ public class Conseiller implements Serializable {
 	/**
 	 * constructeur sans parametres
 	 */
-	public Conseiller() {
+	public Conseiller(String nom, String prenom) {
+		super(nom, prenom);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	/**
 	 * @param prenom
@@ -50,56 +49,32 @@ public class Conseiller implements Serializable {
 	 * @param password
 	 * @param client
 	 */
-	public Conseiller(String prenom, String nom, String login, String password, List<Client> client) {
-		super();
-		this.prenom = prenom;
-		this.nom = nom;
+//	public Conseiller(String prenom, String nom, String login, String password, List<Client> client) {
+//		super();
+//		this.prenom = prenom;
+//		this.nom = nom;
+//		this.login = login;
+//		this.password = password;
+//		this.client = client;
+//	}
+
+
+	public Conseiller(String nom, String prenom, String login, String password, List<Client> client, Gerant gerant) {
+		super(nom, prenom);
 		this.login = login;
 		this.password = password;
 		this.client = client;
+		this.gerant = gerant;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return id;
+
+
+
+	public Conseiller() {
+		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
 
-	/**
-	 * @return the prenom
-	 */
-	public String getPrenom() {
-		return prenom;
-	}
-
-	/**
-	 * @param prenom the prenom to set
-	 */
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	/**
-	 * @return the nom
-	 */
-	public String getNom() {
-		return nom;
-	}
-
-	/**
-	 * @param nom the nom to set
-	 */
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
 
 	/**
 	 * @return the login

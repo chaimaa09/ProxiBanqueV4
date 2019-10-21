@@ -23,11 +23,6 @@ import javax.persistence.ManyToOne;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class Operation implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	@Id @GeneratedValue(strategy =GenerationType.AUTO)
 	private Long numero ;
 	
@@ -35,38 +30,14 @@ public abstract class Operation implements Serializable {
 	private double montant;
 	
 	@ManyToOne
-	@JoinColumn(name="code_crediteur")
-	private Compte crediteur;
-	
-	@ManyToOne
-	@JoinColumn(name="code_debiteur")
-	private Compte debiteur;
-	
-	
+	@JoinColumn(name="CODE_CPT")
+	private Compte compte;
 	/**
 	 * constructeur sans parametres
 	 */
 	public Operation() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-
-
-
-	/**
-	 * @param dateOp
-	 * @param montant
-	 * @param debiteur
-	 */
-	public Operation(Date dateOp, double montant, Compte compte) {
-		super();
-		this.dateOp = dateOp;
-		this.montant = montant;
-		this.debiteur = compte;
-	}
-
-
 	/**
 	 * @return the numero
 	 */
@@ -104,30 +75,27 @@ public abstract class Operation implements Serializable {
 		this.montant = montant;
 	}
 	/**
-	 * @return the crediteur
+	 * @return the compte
 	 */
-	public Compte getCrediteur() {
-		return crediteur;
+	public Compte getCompte() {
+		return compte;
 	}
 	/**
-	 * @param crediteur the crediteur to set
+	 * @param compte the compte to set
 	 */
-	public void setCrediteur(Compte crediteur) {
-		this.crediteur = crediteur;
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
 	/**
-	 * @return the debiteur
+	 * @param dateOp
+	 * @param montant
+	 * @param compte
 	 */
-	public Compte getDebiteur() {
-		return debiteur;
-	}
-	/**
-	 * @param debiteur the debiteur to set
-	 */
-	public void setDebiteur(Compte debiteur) {
-		this.debiteur = debiteur;
+	public Operation(Date dateOp, double montant, Compte compte) {
+		super();
+		this.dateOp = dateOp;
+		this.montant = montant;
+		this.compte = compte;
 	}
 
-
-	
 }
