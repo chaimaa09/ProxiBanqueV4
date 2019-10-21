@@ -32,7 +32,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public abstract class Compte implements Serializable {
 	
 
-	@Id @GeneratedValue(strategy =GenerationType.AUTO)
+	@Id 
+	@GeneratedValue(strategy =GenerationType.AUTO)
     private int numCompte;
 
 	/**
