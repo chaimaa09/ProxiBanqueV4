@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+
+
+
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,8 +31,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Compte implements Serializable {
 	
+
 	@Id @GeneratedValue(strategy =GenerationType.AUTO)
-    private Long numCompte;
+    private int numCompte;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	
+
 	
     private Date dateCreation;
     private double solde;
@@ -37,10 +50,15 @@ public abstract class Compte implements Serializable {
 //    @JoinColumn(name="CODE_CLIENT")
 //    private Client client;
     
-    @OneToMany(mappedBy="compte",fetch=FetchType.LAZY)
+
+    @OneToMany(mappedBy="crediteur")
     @JsonIgnore
-    private List<Operation> operations =  new ArrayList<>();
+    private List<Operation> versement =  new ArrayList<>();
+
     
+    @OneToMany(mappedBy="debiteur")
+    @JsonIgnore
+    private List<Operation> retrait =  new ArrayList<>();
     
 	/**
 	 * constructeur sans parametres
@@ -60,18 +78,15 @@ public abstract class Compte implements Serializable {
 //	}
 	
 	
-	public Compte(Date dateCreation, double solde, List<Operation> operations) {
-		super();
-		this.dateCreation = dateCreation;
-		this.solde = solde;
-		this.operations = operations;
-	}
+
 	
-	public Long getNumCompte() {
+	
+	public int getNumCompte() {
+
 		return numCompte;
 	}
 
-	public void setNumCompte(Long numCompte) {
+	public void setNumCompte(int numCompte) {
 		this.numCompte = numCompte;
 	}
 
@@ -91,13 +106,80 @@ public abstract class Compte implements Serializable {
 		this.solde = solde;
 	}
 
-	public List<Operation> getOperations() {
-		return operations;
+
+	/**
+	 * @return the versement
+	 */
+	public List<Operation> getVersement() {
+		return versement;
 	}
 
-	public void setOperations(List<Operation> operations) {
-		this.operations = operations;
+
+
+	/**
+	 * @param versement the versement to set
+	 */
+	public void setVersement(List<Operation> versement) {
+		this.versement = versement;
+
 	}
+	
+	
+
+//	@JsonIgnore
+//	public Client getClient() {
+//		return client;
+//	}
+//
+//	public void setClient(Client client) {
+//		this.client = client;
+//	}
+
+	/**
+	 * @return the retrait
+	 */
+	public List<Operation> getRetrait() {
+		return retrait;
+	}
+
+	/**
+	 * @param retrait the retrait to set
+	 */
+	public void setRetrait(List<Operation> retrait) {
+		this.retrait = retrait;
+	}
+
+	/**
+	 * @param dateCreation
+	 * @param solde
+	 * @param versement
+	 * @param retrait
+	 */
+	public Compte(Date dateCreation, double solde, List<Operation> versement, List<Operation> retrait) {
+		super();
+		this.dateCreation = dateCreation;
+		this.solde = solde;
+		this.versement = versement;
+		this.retrait = retrait;
+	}
+
+	/**
+	 * @param numCompte
+	 * @param dateCreation
+	 * @param solde
+	 * @param versement
+	 * @param retrait
+	 */
+	public Compte(int numCompte, Date dateCreation, double solde, List<Operation> versement, List<Operation> retrait) {
+		super();
+		this.numCompte = numCompte;
+		this.dateCreation = dateCreation;
+		this.solde = solde;
+		this.versement = versement;
+		this.retrait = retrait;
+	}
+
+	
 	
 	
 

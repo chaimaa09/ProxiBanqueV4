@@ -17,6 +17,6 @@ import ma.jit.proxibanque.entities.Compte;
  *
  */
 @Repository
-public interface CompteRepository extends JpaRepository<Compte,Long > {
+public interface CompteRepository extends JpaRepository<Compte,Integer > {
 
 }

@@ -20,49 +20,53 @@ public class BanqueMetierImpl implements IBanqueMetier {
 	
 	@Autowired
 	OperationRepository operationRepository;
+	/*
+	 * @Override public CompteCourant consulterCompte(Long code) {
+	 * 
+	 * CompteCourant compte= compteRepository.getOne(code);
+	 * System.out.println(compte); if(compte==null) throw new
+	 * RuntimeException("Compte introuvable"); return compte; }
+	 */
+
 
 	@Override
-	public Compte consulterCompte(Long code) {
-		
-		Compte compte= compteRepository.getOne(code);
-		System.out.println(compte);
-		if(compte==null) throw new RuntimeException("Compte introuvable");
-		return compte;
-	}
-
-	@Override
-	public void verser(Long code, double montant) {
-		Compte compte=consulterCompte(code);
-		Versement opv=new Versement(new Date(), montant, compte);
+	public void verser(int codeC, double montant) {
+		Compte crediteur= compteRepository.findById(codeC).get();
+		double commision = montant * 0.05;
+		double montantFinal = montant - commision;
+		Versement opv=new Versement(new Date(), montant, crediteur);
 		operationRepository.save(opv);
-		compte.setSolde(compte.getSolde()+montant);
-		compteRepository.save(compte);
+		crediteur.setSolde(crediteur.getSolde()+montantFinal);
+		
+		compteRepository.save(crediteur);
+		
 		
 	}
 
 	@Override
-	public void retirer(Long code, double montant) {
-		Compte compte=consulterCompte(code);
-		Retrait opr=new Retrait(new Date(), montant, compte);
+	public void retirer(int codeD, double montant) {
+		Compte debiteur=compteRepository.getOne(codeD);
+		Retrait opr=new Retrait(new Date(), montant, debiteur);
 		
+		double soldeDebiteur=debiteur.getSolde();
 		double faciliteCaisse=0;
-		if(compte instanceof CompteCourant)
-		faciliteCaisse=((CompteCourant) compte).getDecouvert();
-		if(compte.getSolde()+faciliteCaisse<montant)
+		if(debiteur instanceof CompteCourant)
+		faciliteCaisse=((CompteCourant) debiteur).getDecouvert();
+		if(soldeDebiteur+faciliteCaisse<montant)
 		throw new RuntimeException("Solde Insuffisant !");
 		operationRepository.save(opr);
-		compte.setSolde(compte.getSolde()-montant);
-		compteRepository.save(compte);
+		debiteur.setSolde(soldeDebiteur-montant);
+		compteRepository.save(debiteur);
 
 	}
 
 	@Override
-	public void virement(Long code1, Long code2, double montant) {
-		if(code1.equals(code2))
-			throw new RuntimeException("impossible de virer sur le meme compte !");
-			retirer(code1,montant);
-			verser(code2,montant);
-
+	public boolean virement(int codeD, int codeC, double montant) {
+//		if(codeD.equals(codeC))
+//			throw new RuntimeException("impossible de virer sur le meme compte !");
+			retirer(codeD,montant);
+			verser(codeC,montant);
+return true;
 	}
 
 }
