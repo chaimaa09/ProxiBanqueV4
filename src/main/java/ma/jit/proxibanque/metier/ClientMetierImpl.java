@@ -70,8 +70,10 @@ public class ClientMetierImpl implements IClientMetier {
 
 	@Override
 	public List<Client> listeClients() {
+		List<Client> listeClients=clientRepository.findAll() ;
+		System.out.println("get data "+listeClients);
+		return listeClients;
 		
-		return clientRepository.findAll() ;
 	}
 
 	

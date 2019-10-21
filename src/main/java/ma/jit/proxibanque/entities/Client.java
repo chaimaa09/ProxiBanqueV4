@@ -112,6 +112,37 @@ public class Client implements Serializable {
 		this.conseiller = conseiller;
 	}
 
+	/**
+	 * @param code
+	 * @param nom
+	 * @param prenom
+	 * @param adresse
+	 * @param email
+	 * @param ville
+	 * @param codePostale
+	 * @param compteCourant
+	 * @param compteEpargne
+	 * @param conseiller
+	 */
+	public Client(Long code,
+			@Size(min = 1, max = 25) @Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces") String nom,
+			@Size(min = 1, max = 25) @Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces") String prenom,
+			@Size(min = 1, max = 50) String adresse,
+			@NotEmpty(message = "Email address cannot be empty") @Email(message = "Invalid email address, e.g. valid email address: example@gmail.com") String email,
+			String ville, String codePostale, CompteCourant compteCourant, CompteEpargne compteEpargne,
+			Conseiller conseiller) {
+		super();
+		this.code = code;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.email = email;
+		this.ville = ville;
+		this.codePostale = codePostale;
+		this.compteCourant = compteCourant;
+		this.compteEpargne = compteEpargne;
+		this.conseiller = conseiller;
+	}
 	public Long getCode() {
 		return code;
 	}
@@ -190,6 +221,12 @@ public class Client implements Serializable {
 	
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
+	}
+	@Override
+	public String toString() {
+		return "Client [code=" + code + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", email="
+				+ email + ", ville=" + ville + ", codePostale=" + codePostale + ", compteCourant=" + compteCourant
+				+ ", compteEpargne=" + compteEpargne + ", conseiller=" + conseiller + "]";
 	}
 
 //	@JsonIgnore
