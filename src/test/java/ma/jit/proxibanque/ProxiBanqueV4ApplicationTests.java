@@ -36,5 +36,12 @@ public class ProxiBanqueV4ApplicationTests {
 					new Client(2L,"karam","basim","lol","bki@gmail.com","casa","2300", null, null, null)).collect(Collectors.toList()));
 		assertEquals(2, clientMetier.listeClients().size());
 	}
+	
+	@Test
+	public void ajouterClientTest() {
+		Client client = new Client(1L,"karama","basma","lol","bk@gmail.com","casa","2300", null, null, null);
+		when(clientRepository.save(client)).thenReturn(client);
+		assertEquals(client, clientMetier.ajouterClient(client));
+	}
 
 }
