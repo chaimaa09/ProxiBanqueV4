@@ -35,9 +35,9 @@ public class BanqueMetierImpl implements IBanqueMetier {
 
 
 	@Override
-	public void verser(long idParametrage,int codeC, double montant) {
+	public void verser(int codeC, double montant) {
 		Compte crediteur= compteRepository.findById(codeC).get();
-		Parametrage parametrage = parametrageRepository.findById(idParametrage).get();
+		Parametrage parametrage = parametrageRepository.findById(1L).get();
 		double commision = montant * parametrage.getCommission();
 		double montantFinal = montant - commision;
 		Versement opv=new Versement(new Date(), montant, crediteur);
@@ -67,11 +67,11 @@ public class BanqueMetierImpl implements IBanqueMetier {
 	}
 
 	@Override
-	public boolean virement(long idParametrage,int codeD, int codeC, double montant) {
+	public boolean virement(int codeD, int codeC, double montant) {
 //		if(codeD.equals(codeC))
 //			throw new RuntimeException("impossible de virer sur le meme compte !");
 			retirer(codeD,montant);
-			verser(idParametrage,codeC,montant);
+			verser(codeC,montant);
 			return true;
 	}
 
