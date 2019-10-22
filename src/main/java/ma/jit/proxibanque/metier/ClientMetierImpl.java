@@ -51,15 +51,20 @@ public class ClientMetierImpl implements IClientMetier {
 	}
 
 	@Override
-	public Client ajouterClient(Client client) {
+	public Client ajouterClient(String login,Client client) {
 		Parametrage parametrage = parametrageRepository.findById(1L).get();
-        Conseiller conseiller = conseillerRepository.findById(2L).get();
+        Conseiller conseiller = conseillerRepository.findByLogin(login);
+        
+//        client.setConseiller(conseiller);
         if(conseiller.getClient().size() < parametrage.getNombreMaxClient() ) {
-        Compte compte = new CompteCourant();
+        CompteCourant compte = new CompteCourant();
         compte.setSolde(20);
         compte.setDateCreation(new Date());
-        
+        client.addCompte(compte);
+        conseiller.getClient().add(client);
         client.setConseiller(conseiller);
+        if (client.getCompteEpargne() != null)
+			client.getCompteEpargne().setDateCreation(new Date());
         return clientRepository.save(client);
         }
         else {

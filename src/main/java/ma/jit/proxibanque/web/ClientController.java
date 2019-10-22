@@ -41,9 +41,9 @@ public class ClientController {
 		return clientService.consulterClient(id);
 	}
 	
-	@PostMapping("/clients")
-	public Client addClient(@RequestBody Client client) {
-		return clientService.ajouterClient(client);
+	@PostMapping("/clients/{login}")
+	public Client addClient(@PathVariable(value = "login") String login,@RequestBody Client client) {
+		return clientService.ajouterClient(login, client);
 	}
 	
 	@DeleteMapping("/clients/{id}")

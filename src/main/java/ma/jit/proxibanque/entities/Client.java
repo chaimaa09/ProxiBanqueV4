@@ -69,7 +69,7 @@ public class Client implements Serializable {
     
     @ManyToOne
 	@JoinColumn(name="code_conseiller")
-    @JsonIgnore
+//    @JsonIgnore
     private Conseiller conseiller;
     
 	/**
@@ -228,6 +228,12 @@ public class Client implements Serializable {
 				+ email + ", ville=" + ville + ", codePostale=" + codePostale + ", compteCourant=" + compteCourant
 				+ ", compteEpargne=" + compteEpargne + ", conseiller=" + conseiller + "]";
 	}
+	
+	public void addCompte(CompteCourant compte) {
+		this.setCompteCourant(compte);
+        
+        compte.setClient(this);
+    }
 
 //	@JsonIgnore
 //	public List<Compte> getListeComptes() {

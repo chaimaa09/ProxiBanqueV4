@@ -19,5 +19,5 @@ import ma.jit.proxibanque.entities.Conseiller;
  */
 @Repository
 public interface ConseillerRepository extends JpaRepository<Conseiller, Long>{
-
+	 public Conseiller findByLogin(String Login);
 }
