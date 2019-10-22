@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * @author Groupe D
  *
@@ -24,9 +26,11 @@ public class Agence {
 	private String adresse;
 	
 	@OneToOne(mappedBy = "agence",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+	@JsonManagedReference
 	private Gerant gerant;
 	
-	@OneToOne(mappedBy = "agence",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+	@OneToOne(mappedBy = "agence",fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JsonManagedReference
 	private CompteAgence compteAgence;
 	
 	

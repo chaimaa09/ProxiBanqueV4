@@ -6,7 +6,10 @@ package ma.jit.proxibanque.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
  * @author Groupe D
@@ -15,6 +18,8 @@ import javax.persistence.OneToOne;
 public class CompteAgence extends Compte {
 
 	@OneToOne
+	@JoinColumn(name = "idAgence")
+	@JsonBackReference
 	private Agence agence;
 	
 	/**
