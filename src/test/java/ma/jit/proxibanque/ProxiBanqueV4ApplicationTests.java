@@ -45,7 +45,12 @@ public class ProxiBanqueV4ApplicationTests {
 		assertEquals(client, clientMetier.ajouterClient(client));
 	}
 
-
+	@Test
+	public void supprimerClientTest() {
+		Client client = new Client(1L,"karama","basma","lol","bk@gmail.com","casa","2300", null, null, null);
+		clientMetier.supprimerClient(1L);
+		verify(clientRepository,times(1)).deleteById(1L);
+	}
 
 	@Test
 	public void consulterClientTest() {
