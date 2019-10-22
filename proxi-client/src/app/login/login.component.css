@@ -1,0 +1,9 @@
+.bg-login { 
+    position: fixed;
+    min-width: 100%;
+    background-image: url('src/assets/images/2018-money-background-white.jpg'); 
+    /* background-repeat: no-repeat; */
+    /* background-size: 100%; */
+    /* background-position: center; */
+    /* background-size: cover; */
+	}
