@@ -52,26 +52,26 @@ public class ClientMetierImpl implements IClientMetier {
 
 	@Override
 	public Client ajouterClient(Client client) {
-//		Parametrage parametrage = parametrageRepository.findById(1L).get();
-//        Conseiller conseiller = conseillerRepository.findById(id).get();
-//        if(conseiller.getClient().size() < parametrage.getNombreMaxClient() ) {
-//        Compte compte = new CompteCourant();
-//        compte.setSolde(20);
-//        compte.setDateCreation(new Date());
-//        client.;
-//        client.setConseiller(conseiller);
-//        return clientRepository.save(client);
-//        }
-//        else {
-//            return client;
-//        } 
-		if (client.getCompteCourant() != null)
-			client.getCompteCourant().setDateCreation(new Date());
-
-		if (client.getCompteEpargne() != null)
-			client.getCompteEpargne().setDateCreation(new Date());
-
-		return clientRepository.save(client);
+		Parametrage parametrage = parametrageRepository.findById(1L).get();
+        Conseiller conseiller = conseillerRepository.findById(2L).get();
+        if(conseiller.getClient().size() < parametrage.getNombreMaxClient() ) {
+        Compte compte = new CompteCourant();
+        compte.setSolde(20);
+        compte.setDateCreation(new Date());
+        
+        client.setConseiller(conseiller);
+        return clientRepository.save(client);
+        }
+        else {
+            return client;
+        } 
+//		if (client.getCompteCourant() != null)
+//			client.getCompteCourant().setDateCreation(new Date());
+//
+//		if (client.getCompteEpargne() != null)
+//			client.getCompteEpargne().setDateCreation(new Date());
+//
+//		return clientRepository.save(client);
 	}
 
 	@Override
