@@ -6,6 +6,7 @@ package ma.jit.proxibanque.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
  * @author Groupe D
  *
  */
+@Entity
 public class CompteAgence extends Compte {
 
 	@OneToOne
