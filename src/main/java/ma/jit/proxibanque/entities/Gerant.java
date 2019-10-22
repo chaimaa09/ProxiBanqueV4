@@ -38,14 +38,9 @@ public class Gerant extends Employe implements Serializable {
 	 * @param password
 	 * @param conseiller
 	 */
-//	public Gerant(String prenom, String nom, String login, String password, List<Conseiller> conseiller) {
-//		super();
-//		this.prenom = prenom;
-//		this.nom = nom;
-//		this.login = login;
-//		this.password = password;
-//		this.conseiller = conseiller;
-//	}
+	public Gerant() {
+
+	}
 	
 	public Gerant(String nom, String prenom) {
 		super(nom, prenom);

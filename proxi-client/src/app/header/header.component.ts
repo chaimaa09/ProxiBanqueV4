@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +9,21 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router : Router) { }
-
+  constructor(private router : Router, private authService: AuthService) { }
+  isAuth: boolean = false
+  user = null;
+  role: string = null;
   ngOnInit() {
-  }
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user);
+    this.role = this.user.role; 
+    console.log(this.role);
+    this.isAuth = this.role?true:false;
 
+    
+  }
   logout(){
-    //localStorage.removeItem("token")
-    this.router.navigate(["/login"]);
-    //this.isAuth = false ;
+    this.authService.logout();
   }
 }
+

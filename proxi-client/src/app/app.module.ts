@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,10 @@ import { ListConseillerComponent } from './list-conseiller/list-conseiller.compo
 import { DetailsConseillerComponent } from './details-conseiller/details-conseiller.component';
 import { CreateConseillerComponent } from './create-conseiller/create-conseiller.component';
 import { FooterComponent } from './footer/footer.component';
+import { ParametrageComponent } from './parametrage/parametrage.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+ import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AccueilComponent } from './accueil/accueil.component';
 
 
 @NgModule({
@@ -32,7 +36,11 @@ import { FooterComponent } from './footer/footer.component';
     ListConseillerComponent,
     DetailsConseillerComponent,
     CreateConseillerComponent,
-    FooterComponent
+    FooterComponent,
+    ParametrageComponent,
+    DashboardComponent,
+    AccueilComponent
+    
     
   ],
   imports: [
@@ -40,9 +48,13 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

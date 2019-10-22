@@ -65,7 +65,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(
-                "{\"" + "id" + "\":\"" + principal.getId() +  "\",\"" + token + "\":\"" + JwtProperties.TOKEN_PREFIX+ token + "\",\"" + "role" + "\":\""  + principal.getRole() +"\"}"
+                "{\"" + "id" + "\":\"" + principal.getId() +  "\",\"" + "token" + "\":\"" + JwtProperties.TOKEN_PREFIX+ token + "\",\"" + "role" + "\":\""  + principal.getRole() +"\"}"
 
         );
     }
