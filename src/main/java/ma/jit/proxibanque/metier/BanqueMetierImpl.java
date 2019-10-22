@@ -36,15 +36,20 @@ public class BanqueMetierImpl implements IBanqueMetier {
 
 	@Override
 	public void verser(int codeC, double montant) {
-		Compte crediteur= compteRepository.findById(codeC).get();
+		Compte compteCrediteur= compteRepository.findById(codeC).get();
 		Parametrage parametrage = parametrageRepository.findById(1L).get();
+		Compte compteAgence = compteRepository.findById(0).get();
+		
 		double commision = montant * parametrage.getCommission();
 		double montantFinal = montant - commision;
-		Versement opv=new Versement(new Date(), montant, crediteur);
-		operationRepository.save(opv);
-		crediteur.setSolde(crediteur.getSolde()+montantFinal);
+		double soldeAgence = compteAgence.getSolde();
+		compteAgence.setSolde(soldeAgence + commision);
 		
-		compteRepository.save(crediteur);
+		Versement opv=new Versement(new Date(), montant, compteCrediteur);
+		operationRepository.save(opv);
+		compteCrediteur.setSolde(compteCrediteur.getSolde()+montantFinal);
+		
+		compteRepository.save(compteCrediteur);
 		
 		
 	}
