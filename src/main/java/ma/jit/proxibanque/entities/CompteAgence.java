@@ -6,17 +6,36 @@ package ma.jit.proxibanque.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.OneToOne;
+
 /**
  * @author Groupe D
  *
  */
 public class CompteAgence extends Compte {
 
+	@OneToOne
+	private Agence agence;
+	
 	/**
 	 * 
 	 */
 	public CompteAgence() {
 		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @return the agence
+	 */
+	public Agence getAgence() {
+		return agence;
+	}
+
+	/**
+	 * @param agence the agence to set
+	 */
+	public void setAgence(Agence agence) {
+		this.agence = agence;
 	}
 
 	/**
@@ -26,7 +45,9 @@ public class CompteAgence extends Compte {
 	 */
 	public CompteAgence(Date dateCreation, double solde, List<Operation> operations) {
 		super(dateCreation, solde, operations);
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+	
 
 }
