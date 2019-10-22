@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.jit.proxibanque.dao.CompteRepository;
-import ma.jit.proxibanque.dao.IParametrageRepository;
+import ma.jit.proxibanque.dao.ParametrageRepository;
 import ma.jit.proxibanque.dao.OperationRepository;
 import ma.jit.proxibanque.entities.Compte;
 import ma.jit.proxibanque.entities.CompteCourant;
@@ -24,7 +24,7 @@ public class BanqueMetierImpl implements IBanqueMetier {
 	OperationRepository operationRepository;
 	
 	@Autowired
-	IParametrageRepository parametrageRepository;
+	ParametrageRepository parametrageRepository;
 	/*
 	 * @Override public CompteCourant consulterCompte(Long code) {
 	 * 

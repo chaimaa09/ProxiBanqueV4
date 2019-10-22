@@ -10,8 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.jit.proxibanque.dao.ClientRepository;
+import ma.jit.proxibanque.dao.ConseillerRepository;
+import ma.jit.proxibanque.dao.ParametrageRepository;
 import ma.jit.proxibanque.entities.Client;
+import ma.jit.proxibanque.entities.Compte;
 import ma.jit.proxibanque.entities.CompteCourant;
+import ma.jit.proxibanque.entities.Conseiller;
+import ma.jit.proxibanque.entities.Parametrage;
 
 /**
  * @author  Group D
@@ -25,6 +30,12 @@ import ma.jit.proxibanque.entities.CompteCourant;
 public class ClientMetierImpl implements IClientMetier {
 	@Autowired
 	ClientRepository clientRepository;
+	
+	@Autowired
+	ParametrageRepository parametrageRepository;
+	
+	@Autowired
+	ConseillerRepository conseillerRepository;
 	
 
 	@Override
@@ -41,12 +52,19 @@ public class ClientMetierImpl implements IClientMetier {
 
 	@Override
 	public Client ajouterClient(Client client) {
-//		CompteCourant compte = new CompteCourant();
-//		compte.setSolde(2000.00);
-//		compte.setDateCreation(new Date());
-//		compte.setClient(c);
-//		c.getListeComptes().add(compte);
-		
+//		Parametrage parametrage = parametrageRepository.findById(1L).get();
+//        Conseiller conseiller = conseillerRepository.findById(id).get();
+//        if(conseiller.getClient().size() < parametrage.getNombreMaxClient() ) {
+//        Compte compte = new CompteCourant();
+//        compte.setSolde(20);
+//        compte.setDateCreation(new Date());
+//        client.;
+//        client.setConseiller(conseiller);
+//        return clientRepository.save(client);
+//        }
+//        else {
+//            return client;
+//        } 
 		if (client.getCompteCourant() != null)
 			client.getCompteCourant().setDateCreation(new Date());
 

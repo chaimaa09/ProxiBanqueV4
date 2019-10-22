@@ -6,7 +6,7 @@ import ma.jit.proxibanque.entities.Gerant;
 
 /**
  * 
- * @author FOLIO Groupe D
+ * @author Groupe D
  *
  */
 
@@ -15,6 +15,6 @@ import ma.jit.proxibanque.entities.Gerant;
  * c'est une interface qui contient les methodes CRUD du Gérant
  *
  */
-public interface IGerantDAO extends JpaRepository<Gerant, Integer>{
+public interface GerantRepository extends JpaRepository<Gerant, Integer>{
 	
 }
