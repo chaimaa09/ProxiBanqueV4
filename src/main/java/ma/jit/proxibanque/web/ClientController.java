@@ -20,7 +20,7 @@ import ma.jit.proxibanque.entities.Client;
 import ma.jit.proxibanque.metier.IClientMetier;
 
 /**
- * @author Group D
+ * @author Groupe D
  *
  */
 @RestController
@@ -41,9 +41,9 @@ public class ClientController {
 		return clientService.consulterClient(id);
 	}
 	
-	@PostMapping("/clients/{login}")
-	public Client addClient(@PathVariable(value = "login") String login,@RequestBody Client client) {
-		return clientService.ajouterClient(login, client);
+	@PostMapping("/clients")
+	public Client addClient(@RequestBody Client client) {
+		return clientService.ajouterClient( client);
 	}
 	
 	@DeleteMapping("/clients/{id}")

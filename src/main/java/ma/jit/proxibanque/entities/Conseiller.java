@@ -26,6 +26,7 @@ public class Conseiller extends Employe implements Serializable {
 	private String password;
 	
 	@OneToMany(mappedBy = "conseiller",fetch=FetchType.LAZY)
+	@JsonIgnoreProperties("conseiller")
 	private List<Client> client;
 	
 	@ManyToOne

@@ -69,7 +69,7 @@ public class Client implements Serializable {
     
     @ManyToOne
 	@JoinColumn(name="code_conseiller")
-//    @JsonIgnore
+    @JsonIgnoreProperties("clients")
     private Conseiller conseiller;
     
 	/**

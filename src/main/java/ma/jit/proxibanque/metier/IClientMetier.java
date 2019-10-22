@@ -4,7 +4,7 @@ import java.util.List;
 import ma.jit.proxibanque.entities.Client;
 
 /**
- * @author FOLIO Groupe D
+ * @author  Groupe D
  *
  */
 
@@ -15,11 +15,11 @@ public interface IClientMetier {
 	
 	public Client consulterClient(Long code);
 	public void supprimerClient(Long code);
-//	public Client ajouterClient(Client c);
+	public Client ajouterClient(Client c);
 	public Client modifierClient(Long code, Client c);
 	public List<Client> listeClients() ;
-//	CLIENT AJOUTERCLIENT(LONG ID, CLIENT CLIENT);
-	Client ajouterClient(String login, Client client);
+
+//	Client ajouterClient(String login, Client client);
 	
 	
 }

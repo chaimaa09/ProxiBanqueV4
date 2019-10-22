@@ -7,7 +7,7 @@ import ma.jit.proxibanque.entities.Compte;
 
 /**
  * 
- * @author FOLIO Groupe D
+ * @author  Groupe D
  *
  */
 

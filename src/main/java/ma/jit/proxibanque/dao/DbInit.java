@@ -33,10 +33,10 @@ public class DbInit implements CommandLineRunner {
         User manager = new User("fatiz",passwordEncoder.encode("fatiz123"),"GERANT","");
         
 
-        Employe employe = new Conseiller();
-        employe.setNom("Ouakrim");
-        employe.setPrenom("Youness");
-        dan.setEmploye(employe); 
+//        Employe employe = new Conseiller();
+//        employe.setNom("Ouakrim");
+//        employe.setPrenom("Youness");
+//        dan.setEmploye(employe); 
         
         List<User> users = Arrays.asList(dan,admin,manager);
         
