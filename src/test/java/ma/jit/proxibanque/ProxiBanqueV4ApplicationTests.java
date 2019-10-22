@@ -1,6 +1,8 @@
 package ma.jit.proxibanque;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -10,6 +12,7 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -17,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import ma.jit.proxibanque.dao.ClientRepository;
 import ma.jit.proxibanque.entities.Client;
+import ma.jit.proxibanque.entities.CompteCourant;
 import ma.jit.proxibanque.metier.IClientMetier;
 
 @RunWith(SpringRunner.class)
@@ -60,5 +64,18 @@ public class ProxiBanqueV4ApplicationTests {
 		assertEquals(client, clientMetier.consulterClient(id));
 
 	}
-
+//	@Test
+//	public void ajouterClientTest() {
+//	Client client = new Client();
+////	CompteCourant compteCourant = new CompteCourant();
+////	compteCourant.setSolde(500);
+//	client.setNom("Abaach");
+//	client.setPrenom("Mohammed");
+//	client.setEmail("mohamed.abaach@gmail.com");
+//	client.setAdresse("Casa");
+////	client.setCompteCourant(compteCourant);
+////	compteCourant.setClient(client);
+//	Mockito.when(clientRepository.save(client)).thenReturn(client);
+//	assertThat(clientMetier.ajouterClient(client)).isEqualTo(client);
+//	}
 }
