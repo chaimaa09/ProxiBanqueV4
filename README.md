@@ -98,19 +98,19 @@ ProxiBanqueV4
 
 ## Telechargement et Configuration 
 ----------------------------------
-I- Recuperer la source
+I- **Recuperer la source**
 
  1) Cloner le projet depuis lien github `"https://github.com/chaimaa09/ProxiBanqueV4.git"`
  
  2) Configuration sur la partie back-end du projet "ProxiBanqueV4"
 
-   * Creation de la base donnee 'proxibanque_v4':
-   
-   * Base de données MySQL (disponible et configurée avec le logiciel XAMPP). Veillez à ce que celle-ci soit disponible sur le port 3306.
+  * Base de données MySQL (disponible et configurée avec le logiciel XAMPP). Veillez à ce que celle-ci soit disponible sur le port 	      3306.
+  
+  * Creation de la base donnee 'proxibanque_v4':  
 
-   * Copier le port de mysql et coller dans le fichier application.properties qui se trouve dans ce chemin "ProxiBanqueV4\src\main\resources\application.properties"
+  * Copier le port de mysql et coller dans le fichier application.properties qui se trouve dans ce chemin         "ProxiBanqueV4\src\main\resources\application.properties"
 
-	le numero de port se trouve apres 'jdbc:mysql://localhost:' au lieu de 
+  * Le numero de port se trouve apres 'jdbc:mysql://localhost:' au lieu de 
 	mettre 'update' vous mettez 'create' mais juste au niveau du premier lancement du projet.
 ```
 spring.datasource.url = jdbc:mysql://localhost:3306/proxibanque_v4?serverTimezone=UTC
