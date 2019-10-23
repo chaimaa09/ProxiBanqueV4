@@ -20,7 +20,7 @@ les etapes qui nous avons suivie pour developper cette applications:
 * Créer la couche.
 * Sécuriser l'application en utilisant Spring Security.
 
-** Livrables
+## Livrables
 
 - Le projet Eclipse =ProxiBanqueV4=, qui constitue un projet
   Maven
@@ -129,7 +129,7 @@ aller au chemin suivant ="\ProxiBanqueV4\proxi-client"= et lancer la ligne de co
  
 c'est pour installer les nodes modules.
 
-### API
+## API
 
 Method | Path              | Description                        |
 -------|-------------------|------------------------------------|
@@ -142,7 +142,7 @@ DELETE | /clients/{code}   | supprimer un client par son code   |
 
 *********************************************************************************
 
-* Installation et exécution
+## Installation et exécution
 ------------------------------
 
 
@@ -162,14 +162,14 @@ Pour lancer l'application sur le navigateur il faut taper le code suivant sur l'
 `$ ng serve --open`
 
 
-* Description générale
+# Description générale
 --------
-** Authentification
+## Authentification
 
 Aucune requête (sauf pages de login) n’est autorisée sans authentification (système de filtre). L’application fournit donc un système d’authentification permettant de vérifier si le couple login/password correspond à un conseiller ou un gerant présent dans la base de données.
 Si oui, l’accès est autorisé pour une session de 60 minutes.
 
-** Gestion de client
+## Gestion de client
 
 1. Création d'un client (nom, prénom, adresse, code postal, ville,
    téléphone)
@@ -183,7 +183,7 @@ Si oui, l’accès est autorisé pour une session de 60 minutes.
 5. Suppression d'un client et de ses comptes
 
 
-** Gestion de conseiller
+## Gestion de conseiller
 
 1. Création d'un conseiller (nom, prénom, login, password)
 
@@ -191,7 +191,7 @@ Si oui, l’accès est autorisé pour une session de 60 minutes.
 
 3. Affecter un client a un conseiller
 
-** Opérations
+## Opérations
 
 1. Association automatique d'un compte courant (solde 20£) à chaque
    création client
@@ -200,7 +200,7 @@ Si oui, l’accès est autorisé pour une session de 60 minutes.
 
 3. Virements bancaires de compte à compte (courant ou épargne)
 
-** Limitation et bugs
+## Limitation et bugs
 
 /!\ Cette version est hautement expérimentale et de nombreux bugs
 restent à corriger /!\
