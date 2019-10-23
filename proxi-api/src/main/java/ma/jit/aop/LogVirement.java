@@ -19,7 +19,7 @@ import java.util.Date;
 public class LogVirement {
 	private static final Logger log = Logger.getRootLogger();
 
-	@Pointcut(value = "execution(* ma.jit.proxibanque.web.OperationController.*(..) )")
+	@Pointcut(value = "execution(* ma.jit.proxibanque.web.OperationController.virement(..) )")
 	public void myPointcut() {
 
 	}
