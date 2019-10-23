@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientService } from '../services/client.service';
 import { Client } from '../models/client';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-details-client',
@@ -13,7 +14,7 @@ export class DetailsClientComponent implements OnInit {
   code: number;
   client: Client;
   
-  constructor(private route: ActivatedRoute,private router: Router,private serviceClient:ClientService) { }
+  constructor(private route: ActivatedRoute,private router: Router,private serviceClient:ClientService, private authService : AuthService) { }
 
   ngOnInit() {
     this.client = new Client();
@@ -24,7 +25,7 @@ export class DetailsClientComponent implements OnInit {
       .subscribe(data => {
         console.log(data)
         this.client = data;
-      }, error => console.log(error));
+      })
   }
   list(){
     this.router.navigate(['/list-clients']);

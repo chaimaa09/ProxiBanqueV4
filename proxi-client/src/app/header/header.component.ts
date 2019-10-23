@@ -9,18 +9,15 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+    user = JSON.parse(localStorage.getItem('user'));
+    role: string = null
+  
   constructor(private router : Router, private authService: AuthService) { }
-  isAuth: boolean = false
-  user = null;
-  role: string = null;
+  
+  
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user);
-    this.role = this.user.role; 
-    console.log(this.role);
-    this.isAuth = this.role?true:false;
 
-    
+    this.role = this.user.role;
   }
   logout(){
     this.authService.logout();

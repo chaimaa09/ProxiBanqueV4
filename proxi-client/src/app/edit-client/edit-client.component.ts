@@ -3,6 +3,7 @@ import { ClientService } from '../services/client.service';
 import { FormGroup, FormBuilder,FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from '../models/client';
+import { AuthService } from '../services/auth.service';
  
 @Component({
   selector: 'app-edit-client',
@@ -12,7 +13,7 @@ import { Client } from '../models/client';
 export class EditClientComponent implements OnInit {
   
   clientForm : FormGroup;
-  constructor(private fb : FormBuilder, private activeRoute: ActivatedRoute, private clientService: ClientService, private router: Router) { }
+  constructor(private fb : FormBuilder, private activeRoute: ActivatedRoute, private clientService: ClientService, private router: Router, private authService : AuthService) { }
 
   ngOnInit() {
     this.clientForm = this.fb.group({
