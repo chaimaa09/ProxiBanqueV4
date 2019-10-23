@@ -23,6 +23,4 @@ import ma.jit.proxibanque.entities.Operation;
 @Repository
 public interface OperationRepository extends JpaRepository<Operation, Long> {
 
-//	@Query("select o from Operation o where o.compte.code like :x order by o.dateOp desc")
-//	public Page<Operation> listOperation(@Param("x")String codeCte,Pageable page);
 }

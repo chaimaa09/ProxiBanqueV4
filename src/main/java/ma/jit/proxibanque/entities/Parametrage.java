@@ -27,10 +27,16 @@ public class Parametrage implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private double commission;
-	private boolean graphe;
+	private String graphe;
 	private int nombreMaxClient;
 	private int nombreMaxConseiller;
 	
+
+	
+	public String getGraphe() {
+		return graphe;
+	}
+
 
 	/**
 	 * @return the id
@@ -67,7 +73,7 @@ public class Parametrage implements Serializable{
 	/**
 	 * @return the graphe
 	 */
-	public boolean isGraphe() {
+	public String isGraphe() {
 		return graphe;
 	}
 
@@ -75,7 +81,7 @@ public class Parametrage implements Serializable{
 	/**
 	 * @param graphe the graphe to set
 	 */
-	public void setGraphe(boolean graphe) {
+	public void setGraphe(String graphe) {
 		this.graphe = graphe;
 	}
 
@@ -126,7 +132,7 @@ public class Parametrage implements Serializable{
 	 * @param nombreMaxClient
 	 * @param nombreMaxConseiller
 	 */
-	public Parametrage(double commission, boolean graphe, int nombreMaxClient, int nombreMaxConseiller) {
+	public Parametrage(double commission, String graphe, int nombreMaxClient, int nombreMaxConseiller) {
 		super();
 		this.commission = commission;
 		this.graphe = graphe;
