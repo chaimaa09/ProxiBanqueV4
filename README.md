@@ -20,7 +20,7 @@ les etapes qui nous avons suivie pour developper cette applications:
 * Créer la couche.
 * Sécuriser l'application en utilisant Spring Security.
 
-* Livrables
+** Livrables
 
 - Le projet Eclipse =ProxiBanqueV4=, qui constitue un projet
   Maven
