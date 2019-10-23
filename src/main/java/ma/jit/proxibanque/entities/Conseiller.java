@@ -26,7 +26,8 @@ public class Conseiller extends Employe implements Serializable {
 	private String login;
 	private String password;
 	
-	@OneToMany(mappedBy = "conseiller",fetch=FetchType.LAZY)
+	//j'ai ajouter eager pour les tests
+	@OneToMany(mappedBy = "conseiller",fetch=FetchType.EAGER)
 	@JsonIgnoreProperties("conseiller")
 	@JsonBackReference
 	private List<Client> client;
