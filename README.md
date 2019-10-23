@@ -102,7 +102,7 @@ I- **Recuperer la source**
 
  1) Cloner le projet depuis lien github `"https://github.com/chaimaa09/ProxiBanqueV4.git"`
  
- 2) Configuration sur la partie back-end du projet "ProxiBanqueV4"
+ 2) Configuration sur la partie back-end du projet "ProxiBanqueV4":
 
   + Base de données MySQL (disponible et configurée avec le logiciel XAMPP). Veillez à ce que celle-ci soit disponible sur le port 	      3306.
   
@@ -121,7 +121,7 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDial
 spring.jpa.hibernate.ddl-auto = update
 
 ```
-II- Partie front-end 
+II- **Partie front-end** 
 
 aller au chemin suivant `"\ProxiBanqueV4\proxi-client"` et lancer la ligne de commandecmd et tapez la commande suivant:
 
