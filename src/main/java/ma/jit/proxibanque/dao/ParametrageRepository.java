@@ -13,6 +13,6 @@ import ma.jit.proxibanque.entities.Parametrage;
  *
  */
 @Repository
-public interface IParametrageRepository extends JpaRepository<Parametrage, Long> {
+public interface ParametrageRepository extends JpaRepository<Parametrage, Long> {
 
 }
