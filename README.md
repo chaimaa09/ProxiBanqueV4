@@ -282,4 +282,12 @@ Pour lancer l'application sur le navigateur il faut taper le code suivant sur l'
 
 `$ ng serve --open`
 
+## Fonctionement de l'application
+---------------------------------
+la page qui s'affiche en premier lieu c'est la page d'authentification:
+
+- Pour se connecter en tant que profil conseiller entrer => identidiant:chaimaa et mot de passe:chaimaa123
+- Pour se connecter en tant que profil gérant entrer => identidiantfatiz et mot de passe:fatiz123
+- Pour se connecter en tant que profil modérateur entrer => identidiant:nabila et mot de passe:nabila123
+
 
