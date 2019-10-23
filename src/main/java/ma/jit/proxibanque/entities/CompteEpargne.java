@@ -23,7 +23,7 @@ public class CompteEpargne extends Compte {
 	private final double tauxRemuneration =0.03;
 	
 	@OneToOne
-	@JoinColumn(name = "code")
+	@JoinColumn(name = "codeClient")
 	@JsonBackReference
 	private Client client;
 	

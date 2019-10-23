@@ -12,7 +12,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
  * @author Groupe D
@@ -26,7 +30,12 @@ public class Gerant extends Employe implements Serializable {
 	private String password;
 	
 	@OneToMany(mappedBy = "gerant",fetch=FetchType.LAZY)
-	private List<Conseiller> conseiller = new ArrayList<Conseiller>();;
+	private List<Conseiller> conseiller = new ArrayList<Conseiller>();
+	
+	@OneToOne
+	@JoinColumn(name = "idAgence")
+	@JsonBackReference
+	private Agence agence;
 	/**
 	 * constructeur sans parametres
 	 */
