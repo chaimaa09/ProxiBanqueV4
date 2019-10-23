@@ -6,8 +6,11 @@ package ma.jit.proxibanque.metier;
 import java.util.Date;
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ma.jit.proxibanque.dao.ClientRepository;
 import ma.jit.proxibanque.dao.ConseillerRepository;
@@ -79,6 +82,7 @@ public class ClientMetierImpl implements IClientMetier {
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public Client modifierClient(Long id, Client c) {
 		Client client = this.consulterClient(id);
 		client.setNom(c.getNom());
