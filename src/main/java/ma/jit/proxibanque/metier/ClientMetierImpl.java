@@ -6,14 +6,24 @@ package ma.jit.proxibanque.metier;
 import java.util.Date;
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ma.jit.proxibanque.dao.ClientRepository;
 import ma.jit.proxibanque.dao.ConseillerRepository;
+
+import ma.jit.proxibanque.dao.ParametrageRepository;
+
 import ma.jit.proxibanque.entities.Client;
+import ma.jit.proxibanque.entities.Compte;
 import ma.jit.proxibanque.entities.CompteCourant;
 import ma.jit.proxibanque.entities.Conseiller;
+
+import ma.jit.proxibanque.entities.Parametrage;
+
 
 /**
  * @author  Group D
@@ -30,6 +40,11 @@ public class ClientMetierImpl implements IClientMetier {
 	@Autowired
 	ConseillerRepository conseillerRepository ;
 	
+	@Autowired
+	ParametrageRepository parametrageRepository;
+	
+	
+	
 
 	@Override
 	public Client consulterClient(Long codeClient) {
@@ -45,22 +60,34 @@ public class ClientMetierImpl implements IClientMetier {
 
 	@Override
 	public Client ajouterClient(Client client) {
-//		CompteCourant compte = new CompteCourant();
-//		compte.setSolde(2000.00);
-//		compte.setDateCreation(new Date());
-//		compte.setClient(c);
-//		c.getListeComptes().add(compte);
-		
-		if (client.getCompteCourant() != null)
-			client.getCompteCourant().setDateCreation(new Date());
+		Parametrage parametrage = parametrageRepository.findById(1L).get();
+        Conseiller conseiller = conseillerRepository.findById(113L).get();     
 
-		if (client.getCompteEpargne() != null)
+        if(conseiller.getClient().size() < parametrage.getNombreMaxClient() ) {
+        CompteCourant compte = new CompteCourant();
+        compte.setSolde(20);
+        compte.setDateCreation(new Date());
+        client.addCompte(compte);
+        conseiller.getClient().add(client);
+        client.setConseiller(conseiller);
+        if (client.getCompteEpargne() != null)
 			client.getCompteEpargne().setDateCreation(new Date());
-
-		return clientRepository.save(client);
+        return clientRepository.save(client);
+        }
+        else {
+            return client;
+        } 
+//		if (client.getCompteCourant() != null)
+//			client.getCompteCourant().setDateCreation(new Date());
+//
+//		if (client.getCompteEpargne() != null)
+//			client.getCompteEpargne().setDateCreation(new Date());
+//
+//		return clientRepository.save(client);
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public Client modifierClient(Long id, Client c) {
 		Client client = this.consulterClient(id);
 		client.setNom(c.getNom());
@@ -74,8 +101,10 @@ public class ClientMetierImpl implements IClientMetier {
 
 	@Override
 	public List<Client> listeClients() {
+		List<Client> listeClients=clientRepository.findAll() ;
+		System.out.println("get data "+listeClients);
+		return listeClients;
 		
-		return clientRepository.findAll() ;
 	}
 
 	@Override

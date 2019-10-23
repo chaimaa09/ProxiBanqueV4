@@ -6,7 +6,7 @@ package ma.jit.proxibanque.metier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ma.jit.proxibanque.dao.IParametrageRepository;
+import ma.jit.proxibanque.dao.ParametrageRepository;
 import ma.jit.proxibanque.entities.Parametrage;
 
 /**
@@ -17,7 +17,7 @@ import ma.jit.proxibanque.entities.Parametrage;
 public class ParametrageMetierImpl implements IParametrageMetier {
 
 	@Autowired
-	private IParametrageRepository parametrageRepository;
+	private ParametrageRepository parametrageRepository;
 
 	@Override
 	public Parametrage updateParametrage(Long id, Parametrage parametrage) {

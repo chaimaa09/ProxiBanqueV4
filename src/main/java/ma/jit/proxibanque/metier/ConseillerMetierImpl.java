@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.jit.proxibanque.dao.ConseillerRepository;
-
+import ma.jit.proxibanque.dao.GerantRepository;
+import ma.jit.proxibanque.dao.ParametrageRepository;
 import ma.jit.proxibanque.entities.Conseiller;
+import ma.jit.proxibanque.entities.Gerant;
+import ma.jit.proxibanque.entities.Parametrage;
 
 /**
  * @author Group D
@@ -21,13 +24,19 @@ import ma.jit.proxibanque.entities.Conseiller;
  */
 @Service
 public class ConseillerMetierImpl implements IConseillerMetier {
-	
+
 	@Autowired
 	ConseillerRepository conseillerRepository;
 
+	@Autowired
+	GerantRepository gerantRepository;
+
+	@Autowired
+	ParametrageRepository parametrageRepository;
+
 	@Override
 	public Conseiller consulterConseiller(Long code) {
-		
+
 		return conseillerRepository.getOne(code);
 	}
 
@@ -38,23 +47,29 @@ public class ConseillerMetierImpl implements IConseillerMetier {
 	}
 
 	@Override
-	public Conseiller ajouterConseiller(Conseiller c) {
-		
-		return conseillerRepository.save(c);
+	public Conseiller ajouterConseiller(Conseiller conseiller) {
+		Parametrage parametrage = parametrageRepository.findById(1L).get();
+		Gerant gerant = gerantRepository.getOne(0);
+		if (gerant.getConseiller().size() < parametrage.getNombreMaxConseiller()) {
+			return conseillerRepository.save(conseiller);
+		} else
+			return conseiller;
 	}
 
 	@Override
 	public Conseiller modifierConseiller(Long code, Conseiller c) {
 		Conseiller conseiller = this.consulterConseiller(code);
 		conseiller.setNom(c.getNom());
+
 		conseiller.setPrenom(c.getPrenom());		
 		return conseillerRepository.save(conseiller) ;
 		
+
 	}
 
 	@Override
 	public List<Conseiller> listeConseillers() {
-		
+
 		return conseillerRepository.findAll();
 	}
 

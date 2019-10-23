@@ -18,12 +18,14 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author Groupe D
  *
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Compte implements Serializable {
 	

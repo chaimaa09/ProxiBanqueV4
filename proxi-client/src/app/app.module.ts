@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,8 +17,15 @@ import { ListConseillerComponent } from './list-conseiller/list-conseiller.compo
 import { DetailsConseillerComponent } from './details-conseiller/details-conseiller.component';
 import { CreateConseillerComponent } from './create-conseiller/create-conseiller.component';
 import { FooterComponent } from './footer/footer.component';
+<<<<<<< HEAD
 import { ParametrageComponent } from './parametrage/parametrage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+=======
+import { ParametrageComponent } from './parametrage/parametrage.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+ import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AccueilComponent } from './accueil/accueil.component';
+>>>>>>> branch 'master' of https://github.com/chaimaa09/ProxiBanqueV4.git
 
 
 @NgModule({
@@ -37,6 +44,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FooterComponent,
     ParametrageComponent,
     DashboardComponent,
+<<<<<<< HEAD
+=======
+    AccueilComponent
+>>>>>>> branch 'master' of https://github.com/chaimaa09/ProxiBanqueV4.git
     
     
   ],
@@ -47,7 +58,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

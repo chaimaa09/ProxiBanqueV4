@@ -17,6 +17,11 @@ import javax.persistence.Id;
 @Entity
 public class Admin extends Employe implements Serializable {
 	
+	public Admin(String nom, String prenom) {
+		super(nom, prenom);
+	}
+
+
 	private String login;
 	private String password;
 
@@ -27,10 +32,7 @@ public class Admin extends Employe implements Serializable {
 
 	
 
-	public Admin(String nom, String prenom) {
-		super(nom, prenom);
-		// TODO Auto-generated constructor stub
-	}
+
 	
 
 	/**
@@ -38,6 +40,14 @@ public class Admin extends Employe implements Serializable {
 	 */
 	public String getLogin() {
 		return login;
+	}
+
+	/**
+	 * @param nom
+	 * @param prenom
+	 */
+	public Admin() {
+		
 	}
 
 	/**
