@@ -46,7 +46,7 @@ public class DbInit implements CommandLineRunner {
         //create agence
         CompteAgence compteAgence = new CompteAgence();
 		Agence agence = new Agence();
-		compteAgence.setDateCreation(new Date());
+//		compteAgence.setDateCreation(new Date());
 //		compteAgence.setSolde(0);
 		agence.setCompteAgence(compteAgence);
 
