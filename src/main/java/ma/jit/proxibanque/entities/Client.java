@@ -70,6 +70,7 @@ public class Client implements Serializable {
     @ManyToOne
 	@JoinColumn(name="code_conseiller")
     @JsonIgnoreProperties("clients")
+    @JsonManagedReference
     private Conseiller conseiller;
     
 	/**
@@ -81,8 +82,7 @@ public class Client implements Serializable {
 	/**
 	 * constructeur avec parametres
 	 */
-//	public Client(String nom, String prenom, String email, String adresse, String ville, String codePostale,
-//			List<Compte> listeComptes) {
+//	public Client(String nom, String prenom, String email, String adresse, String ville, String codePostale) {
 //		super();
 //		this.nom = nom;
 //		this.prenom = prenom;
@@ -112,6 +112,30 @@ public class Client implements Serializable {
 		this.conseiller = conseiller;
 	}
 
+	/**
+	 * @param code
+	 * @param nom
+	 * @param prenom
+	 * @param adresse
+	 * @param email
+	 * @param ville
+	 * @param codePostale
+	 */
+	public Client(Long code,
+			@Size(min = 1, max = 25) @Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces") String nom,
+			@Size(min = 1, max = 25) @Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces") String prenom,
+			@Size(min = 1, max = 50) String adresse,
+			@NotEmpty(message = "Email address cannot be empty") @Email(message = "Invalid email address, e.g. valid email address: example@gmail.com") String email,
+			String ville, String codePostale) {
+		super();
+		this.code = code;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.email = email;
+		this.ville = ville;
+		this.codePostale = codePostale;
+	}
 	/**
 	 * @param code
 	 * @param nom
