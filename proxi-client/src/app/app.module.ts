@@ -17,6 +17,8 @@ import { ListConseillerComponent } from './list-conseiller/list-conseiller.compo
 import { DetailsConseillerComponent } from './details-conseiller/details-conseiller.component';
 import { CreateConseillerComponent } from './create-conseiller/create-conseiller.component';
 import { FooterComponent } from './footer/footer.component';
+import { ParametrageComponent } from './parametrage/parametrage.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -32,7 +34,10 @@ import { FooterComponent } from './footer/footer.component';
     ListConseillerComponent,
     DetailsConseillerComponent,
     CreateConseillerComponent,
-    FooterComponent
+    FooterComponent,
+    ParametrageComponent,
+    DashboardComponent,
+    
     
   ],
   imports: [
@@ -40,7 +45,7 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

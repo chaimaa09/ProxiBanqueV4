@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.jit.proxibanque.dao.ClientRepository;
+import ma.jit.proxibanque.dao.ConseillerRepository;
 import ma.jit.proxibanque.entities.Client;
 import ma.jit.proxibanque.entities.CompteCourant;
+import ma.jit.proxibanque.entities.Conseiller;
 
 /**
  * @author  Group D
@@ -25,6 +27,8 @@ import ma.jit.proxibanque.entities.CompteCourant;
 public class ClientMetierImpl implements IClientMetier {
 	@Autowired
 	ClientRepository clientRepository;
+	@Autowired
+	ConseillerRepository conseillerRepository ;
 	
 
 	@Override
@@ -72,6 +76,17 @@ public class ClientMetierImpl implements IClientMetier {
 	public List<Client> listeClients() {
 		
 		return clientRepository.findAll() ;
+	}
+
+	@Override
+	public void affecterClient(long idClient, long idConseiller) {
+		Conseiller conseiller = conseillerRepository.findById(idConseiller).get();
+		Client client = clientRepository.findById(idClient).get();
+		client.getConseiller().getClient().remove(client);
+		conseiller.getClient().add(client);
+		client.setConseiller(conseiller);
+		clientRepository.save(client);
+		
 	}
 
 	

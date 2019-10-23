@@ -18,6 +18,7 @@ public interface IClientMetier {
 	public Client ajouterClient(Client c);
 	public Client modifierClient(Long code, Client c);
 	public List<Client> listeClients() ;
+	public void affecterClient(long idClient, long idConseiller);
 	
 	
 }

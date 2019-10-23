@@ -47,8 +47,7 @@ public class ConseillerMetierImpl implements IConseillerMetier {
 	public Conseiller modifierConseiller(Long code, Conseiller c) {
 		Conseiller conseiller = this.consulterConseiller(code);
 		conseiller.setNom(c.getNom());
-		conseiller.setPrenom(c.getPrenom());
-		
+		conseiller.setPrenom(c.getPrenom());		
 		return conseillerRepository.save(conseiller) ;
 		
 	}
