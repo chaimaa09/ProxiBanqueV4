@@ -200,6 +200,7 @@ Le projet devra être envoyé sous la forme d'une archive `ProxiBanqueV4.zip` co
 L'archive ne contiendra que des :
 
  * répertoires
+ * fichiers `.mdj`
  * fichiers `.java`
  * fichiers `.sh`
  * fichiers `.md`
@@ -251,7 +252,7 @@ ProxiBanqueV4
 
   + JPA
 
-### API Client
+### Exemple API de Client
 
 Method | Path              | Description                        |
 -------|-------------------|------------------------------------|
