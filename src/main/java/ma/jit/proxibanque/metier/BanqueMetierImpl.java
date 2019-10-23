@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.jit.proxibanque.dao.CompteRepository;
-import ma.jit.proxibanque.dao.IParametrageRepository;
+import ma.jit.proxibanque.dao.ParametrageRepository;
 import ma.jit.proxibanque.dao.OperationRepository;
 import ma.jit.proxibanque.entities.Compte;
 import ma.jit.proxibanque.entities.CompteCourant;
@@ -24,7 +24,7 @@ public class BanqueMetierImpl implements IBanqueMetier {
 	OperationRepository operationRepository;
 	
 	@Autowired
-	IParametrageRepository parametrageRepository;
+	ParametrageRepository parametrageRepository;
 	/*
 	 * @Override public CompteCourant consulterCompte(Long code) {
 	 * 
@@ -36,15 +36,20 @@ public class BanqueMetierImpl implements IBanqueMetier {
 
 	@Override
 	public void verser(int codeC, double montant) {
-		Compte crediteur= compteRepository.findById(codeC).get();
+		Compte compteCrediteur= compteRepository.findById(codeC).get();
 		Parametrage parametrage = parametrageRepository.findById(1L).get();
+		Compte compteAgence = compteRepository.findById(0).get();
+		
 		double commision = montant * parametrage.getCommission();
 		double montantFinal = montant - commision;
-		Versement opv=new Versement(new Date(), montant, crediteur);
-		operationRepository.save(opv);
-		crediteur.setSolde(crediteur.getSolde()+montantFinal);
+		double soldeAgence = compteAgence.getSolde();
+		compteAgence.setSolde(soldeAgence + commision);
 		
-		compteRepository.save(crediteur);
+		Versement opv=new Versement(new Date(), montant, compteCrediteur);
+		operationRepository.save(opv);
+		compteCrediteur.setSolde(compteCrediteur.getSolde()+montantFinal);
+		
+		compteRepository.save(compteCrediteur);
 		
 		
 	}

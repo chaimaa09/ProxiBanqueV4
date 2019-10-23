@@ -27,7 +27,7 @@ public class CompteCourant extends Compte implements Serializable{
 	}
 	
 	@OneToOne
-	@JoinColumn(name = "code")
+	@JoinColumn(name = "codeClient")
 	@JsonBackReference
 	private Client client;
 

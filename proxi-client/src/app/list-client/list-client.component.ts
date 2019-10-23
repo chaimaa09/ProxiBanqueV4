@@ -27,6 +27,7 @@ export class ListClientComponent implements OnInit {
   delete(code:number){
     this.clientService.deleteClient(code)
     .subscribe((response)=>{
+      confirm('are you sure');
       console.log(response),
         this.getAll()
       }, 

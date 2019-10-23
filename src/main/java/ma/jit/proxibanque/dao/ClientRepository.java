@@ -7,7 +7,7 @@ import ma.jit.proxibanque.entities.Client;
 
 /**
  * 
- * @author FOLIO Groupe D
+ * @author  Groupe D
  *
  */
 
@@ -18,5 +18,6 @@ import ma.jit.proxibanque.entities.Client;
  */
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long>{
+	
 
 }
