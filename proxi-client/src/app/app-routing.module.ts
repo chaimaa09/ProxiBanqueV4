@@ -11,28 +11,15 @@ import { DetailsConseillerComponent } from './details-conseiller/details-conseil
 import { CreateConseillerComponent } from './create-conseiller/create-conseiller.component';
 import { ParametrageComponent } from './parametrage/parametrage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-<<<<<<< HEAD
-=======
 import { LoginGuard } from './guards/login.guard';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AuthGuard } from './guards/auth.guard';
->>>>>>> branch 'master' of https://github.com/chaimaa09/ProxiBanqueV4.git
 
 
 const routes: Routes = [
   { path: '',   redirectTo: 'accueil', pathMatch: 'full' },
   { path: 'accueil', canActivate: [LoginGuard], component: AccueilComponent},
   { path: 'login', component: LoginComponent },
-<<<<<<< HEAD
-  { path: 'details-client/:code', component: DetailsClientComponent },
-  { path: 'virement', component: VirementComponent },
-  { path: 'list-conseillers', component: ListConseillerComponent },
-  { path: 'details-conseiller/:id', component: DetailsConseillerComponent },
-  { path: 'create-conseiller', component: CreateConseillerComponent },
-  { path: 'parametrage', component: ParametrageComponent },
-  { path: 'dashboard', component: DashboardComponent },
-];
-=======
   { path: '', canActivate: [AuthGuard], children: [
     { path: 'list-clients', component: ListClientComponent },
     { path: 'edit-client/:code', component: EditClientComponent },
@@ -45,7 +32,6 @@ const routes: Routes = [
     { path: 'parametrage', component: ParametrageComponent },
     { path: 'dashboard', component: DashboardComponent } ]
   }];
->>>>>>> branch 'master' of https://github.com/chaimaa09/ProxiBanqueV4.git
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

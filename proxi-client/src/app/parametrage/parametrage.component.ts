@@ -12,10 +12,7 @@ export class ParametrageComponent implements OnInit {
 
   paramForm : FormGroup;
 
-<<<<<<< HEAD
-=======
   
->>>>>>> branch 'master' of https://github.com/chaimaa09/ProxiBanqueV4.git
   constructor(private fb : FormBuilder,private activeRoute: ActivatedRoute, private parametrageService : ParametrageService, private router : Router) { }
 
   ngOnInit() {

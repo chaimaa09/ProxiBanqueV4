@@ -17,15 +17,10 @@ import { ListConseillerComponent } from './list-conseiller/list-conseiller.compo
 import { DetailsConseillerComponent } from './details-conseiller/details-conseiller.component';
 import { CreateConseillerComponent } from './create-conseiller/create-conseiller.component';
 import { FooterComponent } from './footer/footer.component';
-<<<<<<< HEAD
-import { ParametrageComponent } from './parametrage/parametrage.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-=======
 import { ParametrageComponent } from './parametrage/parametrage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
  import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AccueilComponent } from './accueil/accueil.component';
->>>>>>> branch 'master' of https://github.com/chaimaa09/ProxiBanqueV4.git
 
 
 @NgModule({
@@ -44,10 +39,7 @@ import { AccueilComponent } from './accueil/accueil.component';
     FooterComponent,
     ParametrageComponent,
     DashboardComponent,
-<<<<<<< HEAD
-=======
     AccueilComponent
->>>>>>> branch 'master' of https://github.com/chaimaa09/ProxiBanqueV4.git
     
     
   ],
