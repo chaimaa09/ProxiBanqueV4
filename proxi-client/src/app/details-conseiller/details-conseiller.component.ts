@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ConseillerService } from '../services/conseiller.service';
 import { Conseiller } from '../models/conseiller';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-details-conseiller',
@@ -13,7 +14,7 @@ export class DetailsConseillerComponent implements OnInit {
   id: number;
   conseiller: Conseiller;
   
-  constructor(private serviceConseiller : ConseillerService, private router : Router, private route : ActivatedRoute) { }
+  constructor(private serviceConseiller : ConseillerService, private router : Router, private route : ActivatedRoute, private authService : AuthService) { }
 
   ngOnInit() {
     this.conseiller = new Conseiller();
@@ -24,7 +25,7 @@ export class DetailsConseillerComponent implements OnInit {
       .subscribe(data => {
         console.log(data)
         this.conseiller = data;
-      }, error => console.log(error));
+      })
   }
 
   list(){

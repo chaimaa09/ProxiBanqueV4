@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ParametrageService } from '../services/parametrage.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-parametrage',
@@ -13,7 +14,7 @@ export class ParametrageComponent implements OnInit {
   paramForm : FormGroup;
 
   
-  constructor(private fb : FormBuilder,private activeRoute: ActivatedRoute, private parametrageService : ParametrageService, private router : Router) { }
+  constructor(private fb : FormBuilder,private activeRoute: ActivatedRoute, private parametrageService : ParametrageService, private router : Router, private authService : AuthService) { }
 
   ngOnInit() {
     this.paramForm = this.fb.group({

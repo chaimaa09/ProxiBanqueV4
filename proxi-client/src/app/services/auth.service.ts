@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -24,4 +24,10 @@ export class AuthService {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+
+  /* verifyError(err) {
+    if (err instanceof HttpErrorResponse) {
+      return this.router.navigate(['/login']);
+    }
+  } */
 }

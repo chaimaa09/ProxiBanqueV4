@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ConseillerService } from '../services/conseiller.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-create-conseiller',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CreateConseillerComponent implements OnInit {
 
-  constructor(private conseillerService : ConseillerService, private router : Router) { }
+  constructor(private conseillerService : ConseillerService, private router : Router, private authService : AuthService) { }
 
   ngOnInit() {
   }
