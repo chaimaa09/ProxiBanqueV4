@@ -1,0 +1,7 @@
+ma.jit.aop
+ma.jit.proxibanque
+ma.jit.proxibanque.dao
+ma.jit.proxibanque.entities
+ma.jit.proxibanque.metier
+ma.jit.proxibanque.security
+ma.jit.proxibanque.web
