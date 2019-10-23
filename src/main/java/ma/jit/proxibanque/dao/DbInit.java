@@ -8,10 +8,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 import ma.jit.proxibanque.entities.Agence;
 import ma.jit.proxibanque.entities.CompteAgence;
+
+import ma.jit.proxibanque.entities.Admin;
+
 import ma.jit.proxibanque.entities.Conseiller;
 import ma.jit.proxibanque.entities.Employe;
+import ma.jit.proxibanque.entities.Gerant;
 import ma.jit.proxibanque.entities.User;
 
 
@@ -34,9 +39,9 @@ public class DbInit implements CommandLineRunner {
        this.agenceRepository.deleteAll();
 
         // Create users
-        User dan = new User("nabila",passwordEncoder.encode("nabila123"),"Moderateur","");
-        User admin = new User("chaimaa",passwordEncoder.encode("chaimaa123"),"CONSEILLER","");
-        User manager = new User("fatiz",passwordEncoder.encode("fatiz123"),"GERANT","");
+        User nabila = new User("nabila",passwordEncoder.encode("nabila123"),"Moderateur","");
+        User chaimaa = new User("chaimaa",passwordEncoder.encode("chaimaa123"),"CONSEILLER","");
+        User fz = new User("fatiz",passwordEncoder.encode("fatiz123"),"GERANT","");
         
         //create agence
         CompteAgence compteAgence = new CompteAgence();
@@ -45,12 +50,24 @@ public class DbInit implements CommandLineRunner {
 //		compteAgence.setSolde(0);
 		agence.setCompteAgence(compteAgence);
 
-//        Employe employe = new Conseiller();
-//        employe.setNom("Ouakrim");
-//        employe.setPrenom("Youness");
-//        dan.setEmploye(employe); 
+
+        Employe employe = new Conseiller();
+        employe.setNom("bb");
+        employe.setPrenom("chaimaa");
+        chaimaa.setEmploye(employe); 
+
         
-        List<User> users = Arrays.asList(dan,admin,manager);
+        Employe employe1 = new Admin();
+        employe1.setNom("GG");
+        employe1.setPrenom("nabila");
+        nabila.setEmploye(employe1); 
+        
+        Employe employe2 = new Gerant();
+        employe2.setNom("SS");
+        employe2.setPrenom("fz");
+        fz.setEmploye(employe2); 
+        
+        List<User> users = Arrays.asList(chaimaa,nabila,fz);
         
         
 

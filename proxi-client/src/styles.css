@@ -36,3 +36,8 @@ legend.legend-border {
   padding:0 10px;
   border-bottom:none;
 }
+
+html, body, app-root {
+  height: 100%;
+  margin: 0;
+  }
