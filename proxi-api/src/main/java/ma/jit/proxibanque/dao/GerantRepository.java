@@ -17,6 +17,6 @@ import ma.jit.proxibanque.entities.Gerant;
  *
  */
 @Repository
-public interface GerantRepository extends JpaRepository<Gerant, Integer>{
+public interface GerantRepository extends JpaRepository<Gerant, Long>{
 	
 }

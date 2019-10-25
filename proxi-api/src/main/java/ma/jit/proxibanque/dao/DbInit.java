@@ -1,19 +1,13 @@
 //package ma.jit.proxibanque.dao;
 //
 //import java.util.Arrays;
-//import java.util.Date;
 //import java.util.List;
 //
 //import org.springframework.boot.CommandLineRunner;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.stereotype.Service;
 //
-//
-//import ma.jit.proxibanque.entities.Agence;
-//import ma.jit.proxibanque.entities.CompteAgence;
-//
 //import ma.jit.proxibanque.entities.Admin;
-//
 //import ma.jit.proxibanque.entities.Conseiller;
 //import ma.jit.proxibanque.entities.Employe;
 //import ma.jit.proxibanque.entities.Gerant;
@@ -26,7 +20,7 @@
 //    private PasswordEncoder passwordEncoder;
 //    
 //
-//    public DbInit(UserRepository userRepository, PasswordEncoder passwordEncoder,AgenceRepository agenceRepository) {
+//    public DbInit(UserRepository userRepository, PasswordEncoder passwordEncoder) {
 //        this.userRepository = userRepository;
 //        this.passwordEncoder = passwordEncoder;
 //        
@@ -44,10 +38,10 @@
 //        User fz = new User("fatiz",passwordEncoder.encode("fatiz123"),"GERANT","");
 //        
 //        //create agence
-//        CompteAgence compteAgence = new CompteAgence();
-//		Agence agence = new Agence();
-//
-//		agence.setCompteAgence(compteAgence);
+////        CompteAgence compteAgence = new CompteAgence();
+////		Agence agence = new Agence();
+////
+////		agence.setCompteAgence(compteAgence);
 //
 //
 //        Employe employe = new Conseiller();

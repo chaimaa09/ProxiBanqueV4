@@ -48,8 +48,8 @@ public class ConseillerMetierImpl implements IConseillerMetier {
 
 	@Override
 	public Conseiller ajouterConseiller(Conseiller conseiller) {
-		Parametrage parametrage = parametrageRepository.findById(1L).get();
-		Gerant gerant = gerantRepository.getOne(0);
+		Parametrage parametrage = parametrageRepository.findById(0L).get();
+		Gerant gerant = gerantRepository.getOne(0L);
 		if (gerant.getConseiller().size() < parametrage.getNombreMaxConseiller()) {
 			return conseillerRepository.save(conseiller);
 		} else
