@@ -16,6 +16,6 @@ export class ParametrageService {
   }
 
   getParametrageById(id : number):Observable<Object>{
-    return this.httpClient.get(environment.serverUrl+"parametrage/" + 1);
+    return this.httpClient.get(environment.serverUrl+"parametrage/" + 0);
   }
 }

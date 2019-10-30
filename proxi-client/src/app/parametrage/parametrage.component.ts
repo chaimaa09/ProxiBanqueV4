@@ -25,8 +25,8 @@ export class ParametrageComponent implements OnInit {
       graphe:['']
     });
     this.activeRoute.params.subscribe( p => {
-      console.log(this.parametrageService.getParametrageById(1))
-      this.parametrageService.getParametrageById(1).subscribe( parametrage => {
+      console.log(this.parametrageService.getParametrageById(0))
+      this.parametrageService.getParametrageById(0).subscribe( parametrage => {
       this.paramForm.setValue(parametrage),
       console.log(parametrage)
       })

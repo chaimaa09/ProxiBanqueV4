@@ -11,6 +11,7 @@
 	<groupId>ma.jit</groupId>
 	<artifactId>proxi-banque-v4</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>proxi-banque-v4</name>
 	<description>Spring Boot project</description>
 

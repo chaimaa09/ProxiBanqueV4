@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 23 oct. 2019 à 17:07
+-- Généré le :  mer. 30 oct. 2019 à 12:49
 -- Version du serveur :  10.3.16-MariaDB
 -- Version de PHP :  7.3.7
 
@@ -84,9 +84,10 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`code`, `adresse`, `code_postale`, `email`, `nom`, `prenom`, `ville`, `code_conseiller`) VALUES
-(17, 'lol', '20220', 'chaij.abrak@gmail.com', 'Baaziz', 'Chaimaa', 'casablanca', NULL),
-(21, 'lol', '20220', 'chaij.ba@gmail.com', 'Baaziz', 'Chaimaa', 'casablanca', NULL),
-(28, 'lol', '20220', 'cha@gmail.com', 'Baaziz', 'Chaim', 'casablanca', 10);
+(17, 'maarif', '20220', 'chaimaa.baaziz@gmail.com', 'Baaziz', 'Chaimaa', 'casablanca', 10),
+(21, 'lol', '20220', 'nab@gmail.com', 'Abrak', 'Nabila', 'casablanca', 10),
+(28, 'lol', '20220', 'fz@gmail.com', 'Ait yahya', 'FZ', 'casablanca', 10),
+(37, 'oulfa', '20229', 'ahmed@gmail.com', 'taboubi', 'ahmed', 'casablanca', 10);
 
 -- --------------------------------------------------------
 
@@ -106,7 +107,7 @@ CREATE TABLE `compte_agence` (
 --
 
 INSERT INTO `compte_agence` (`num_compte`, `date_creation`, `solde`, `id_agence`) VALUES
-(0, NULL, 20, 15);
+(0, '2000-01-01 00:00:00', 955.2, 15);
 
 -- --------------------------------------------------------
 
@@ -127,9 +128,10 @@ CREATE TABLE `compte_courant` (
 --
 
 INSERT INTO `compte_courant` (`num_compte`, `date_creation`, `solde`, `decouvert`, `code_client`) VALUES
-(18, '2019-10-23 13:42:55', 1600, 1000, 17),
-(22, '2019-10-23 13:52:59', 20220, 1000, 21),
-(29, '2019-10-23 14:04:33', 2000, 1000, 28);
+(18, '2019-10-23 13:42:55', 1004, 1000, 17),
+(22, '2019-10-23 13:52:59', 20020, 1000, 21),
+(29, '2019-10-23 14:04:33', 0, 1000, 28),
+(38, '2019-10-24 20:39:21', 2500, 1000, 37);
 
 -- --------------------------------------------------------
 
@@ -150,9 +152,10 @@ CREATE TABLE `compte_epargne` (
 --
 
 INSERT INTO `compte_epargne` (`num_compte`, `date_creation`, `solde`, `taux_remuneration`, `code_client`) VALUES
-(19, '2019-10-23 13:42:55', 20300, 0.03, 17),
-(23, '2019-10-23 13:52:59', 20220, 0.03, 21),
-(30, '2019-10-23 14:04:33', 20220, 0.03, 28);
+(19, '2019-10-23 13:42:55', 20480, 0.03, 17),
+(23, '2019-10-23 13:52:59', 20380, 0.03, 21),
+(30, '2019-10-23 14:04:33', 21740.8, 0.03, 28),
+(39, '2019-10-24 20:39:21', 0, 0.03, 37);
 
 -- --------------------------------------------------------
 
@@ -174,7 +177,8 @@ CREATE TABLE `conseiller` (
 --
 
 INSERT INTO `conseiller` (`id`, `nom`, `prenom`, `login`, `password`, `code_gerant`) VALUES
-(10, 'bb', 'chaimaa', NULL, NULL, 0);
+(10, 'bb', 'chaimaa', NULL, NULL, 0),
+(58, 'ait', 'fz', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -196,7 +200,7 @@ CREATE TABLE `gerant` (
 --
 
 INSERT INTO `gerant` (`id`, `nom`, `prenom`, `login`, `password`, `id_agence`) VALUES
-(0, 'BAAZIZ', 'chaimaa', NULL, NULL, 15);
+(0, 'BAAZIZ', 'fz', NULL, NULL, 15);
 
 -- --------------------------------------------------------
 
@@ -213,13 +217,13 @@ CREATE TABLE `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(37),
-(37),
-(37),
-(37),
-(37),
-(37),
-(37);
+(80),
+(80),
+(80),
+(80),
+(80),
+(80),
+(80);
 
 -- --------------------------------------------------------
 
@@ -244,7 +248,35 @@ INSERT INTO `operation` (`dtype`, `numero`, `date_op`, `montant`, `code_cpt`) VA
 ('R', 24, '2019-10-23 13:55:39', 100, 18),
 ('R', 25, '2019-10-23 13:57:51', 100, 18),
 ('R', 26, '2019-10-23 13:59:44', 100, 18),
-('V', 27, '2019-10-23 13:59:45', 100, 19);
+('V', 27, '2019-10-23 13:59:45', 100, 19),
+('R', 43, '2019-10-24 20:41:25', 100, 18),
+('V', 44, '2019-10-24 20:41:25', 100, 19),
+('R', 46, '2019-10-24 22:30:22', 100, 22),
+('V', 47, '2019-10-24 22:30:22', 100, 23),
+('R', 48, '2019-10-27 22:57:04', 100, 22),
+('V', 49, '2019-10-27 22:57:05', 100, 23),
+('R', 51, '2019-10-29 09:19:17', 100, 18),
+('V', 52, '2019-10-29 09:19:17', 100, 19),
+('R', 56, '2019-10-29 09:33:40', 100, 18),
+('V', 57, '2019-10-29 09:33:40', 100, 19),
+('R', 59, '2019-10-29 11:25:00', 100, 18),
+('V', 60, '2019-10-29 11:25:00', 100, 19),
+('R', 61, '2019-10-29 11:26:36', 100, 18),
+('V', 62, '2019-10-29 11:26:36', 100, 19),
+('R', 63, '2019-10-29 11:27:23', 100, 18),
+('V', 64, '2019-10-29 11:27:24', 100, 19),
+('R', 65, '2019-10-29 11:28:05', 100, 18),
+('V', 66, '2019-10-29 11:28:05', 100, 19),
+('R', 67, '2019-10-29 11:29:11', 880, 19),
+('V', 68, '2019-10-29 11:29:11', 880, 18),
+('R', 69, '2019-10-29 11:31:31', 220, 30),
+('V', 70, '2019-10-29 11:31:32', 220, 29),
+('R', 71, '2019-10-29 11:32:38', 176, 29),
+('V', 72, '2019-10-29 11:32:38', 176, 30),
+('R', 73, '2019-10-29 11:33:37', 2000, 29),
+('V', 74, '2019-10-29 11:33:38', 2000, 30),
+('R', 75, '2019-10-29 13:47:35', 600, 18),
+('V', 76, '2019-10-29 13:47:36', 600, 19);
 
 -- --------------------------------------------------------
 
@@ -265,7 +297,7 @@ CREATE TABLE `parametrage` (
 --
 
 INSERT INTO `parametrage` (`id`, `commission`, `graphe`, `nombre_max_client`, `nombre_max_conseiller`) VALUES
-(0, 0.2, '0', 5, 5);
+(0, 0, 'Histogramme', 5, 5);
 
 -- --------------------------------------------------------
 
@@ -290,7 +322,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `active`, `password`, `permissions`, `roles`, `username`, `employe_id`) VALUES
 (9, 1, '$2a$10$qqu/t5qfQRrh4xunxKvTbOb6EUs6Z8li.C/R63BrsCnUFDVPLHvkK', '', 'CONSEILLER', 'chaimaa', 10),
 (11, 1, '$2a$10$rjO6pLoN5.TOuEULveF79ebNVLctoWwa5QuOS.HtmHF7ztE78p87C', '', 'Moderateur', 'nabila', 12),
-(13, 1, '$2a$10$G6aYX.hJGjgmrJoyr.tYdeB/joSwfFU.uWjbWEWdKOPKHU2VkGhBu', '', 'GERANT', 'fatiz', 14);
+(13, 1, '$2a$10$G6aYX.hJGjgmrJoyr.tYdeB/joSwfFU.uWjbWEWdKOPKHU2VkGhBu', '', 'GERANT', 'fatiz', 0);
 
 --
 -- Index pour les tables déchargées

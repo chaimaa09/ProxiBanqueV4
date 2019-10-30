@@ -68,14 +68,8 @@ public class ClientMetierImpl implements IClientMetier {
 	 */
 	@Override
 	public Client ajouterClient(Client client) {
-//		if (client.getCompteCourant() != null)
-//			client.getCompteCourant().setDateCreation(new Date());
-//
-//		if (client.getCompteEpargne() != null)
-//			client.getCompteEpargne().setDateCreation(new Date());
-//
-//		return clientRepository.save(client);
-//	}
+
+
 		Parametrage parametrage = parametrageRepository.findById(0L).get();
        Conseiller conseiller = conseillerRepository.findById(10L).get();     
 
