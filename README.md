@@ -71,7 +71,7 @@ restent à corriger /!\
 
 1) Déziper dans un dossier le fichier "ProxibanqueV4-master.zip" 
 2) Copier le fichier "proxi-banque-v4.war"
-3) copier "proxi-banque-v4.war" dans le dossier "xampp\tomcat\webapps"
+3) Coller "proxi-banque-v4.war" dans le dossier "xampp\tomcat\webapps"
 4) Lancer serveur d'application Tomcat 9 et deployer proxi-banque-v4.war
 
 ======== Créer la base de donnée MySQL ========
