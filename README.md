@@ -84,12 +84,18 @@ restent à corriger /!\
 5) cliquer sur l'onglet "Importer" puis choisir un fichier
 6) Acceder au dossier "base de donnees" et selectionner le Fichier "proxibanque_v4.sql"
 7) Cliquer sur "executer"
+
+
 ======== Lancer l'application ========
+
+
 
 1) Acceder au dossier "proxi-client"
 2) ouvrez le fichier dans la console et lancez la commande "npm install" et ensuite la commande "npm start"
 3) Ouvrez un navigateur internet
 4) Tapez dans l'url : http://localhost:4200/login
+
+
 
 ## Fonctionement de l'application
 ---------------------------------
